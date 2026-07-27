@@ -16,13 +16,13 @@ pre: " <b> 1.10. </b> "
 - Thực hành xây dựng và triển khai hàm Lambda. 
 - Hiểu cách xây dựng API không cần quản lý máy chủ.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn tập kiến thức về Amazon CloudWatch và AWS CloudTrail.<br>- Tìm hiểu tổng quan về Serverless Computing và các ưu điểm của mô hình này.<br>- Nghiên cứu vai trò của AWS Lambda trong kiến trúc Serverless. | 13/07/2026 | 13/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Tìm hiểu cấu trúc và cách hoạt động của AWS Lambda.<br>- Thực hành tạo Lambda Function bằng Python hoặc Node.js.<br>- Kiểm tra kết quả thực thi thông qua Test Event. | 14/07/2026 | 14/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Tìm hiểu Amazon API Gateway.<br>- Tạo REST API kết nối với AWS Lambda.<br>- Kiểm tra việc gọi API từ trình duyệt hoặc Postman. | 15/07/2026 | 15/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Tìm hiểu cách tích hợp Lambda với các dịch vụ AWS khác như Amazon S3 hoặc CloudWatch.<br>- Thực hành cấu hình Trigger cho Lambda Function.<br>- Theo dõi quá trình thực thi thông qua CloudWatch Logs. | 16/07/2026 | 16/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Kiểm tra toàn bộ ứng dụng Serverless đã xây dựng.<br>- Khắc phục các lỗi phát sinh trong quá trình triển khai.<br>- Tổng hợp kiến thức và hoàn thành bài thực hành tuần 10. | 17/07/2026 | 17/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập kiến thức về Amazon CloudWatch và AWS CloudTrail đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Serverless Computing và các ưu điểm của mô hình này.<br>- Nghiên cứu vai trò của AWS Lambda trong kiến trúc Serverless. | 13/07/2026 | 13/07/2026 | https://000111.awsstudygroup.com/ |
+| 3 | - Tìm hiểu cấu trúc và cách hoạt động của AWS Lambda.<br>- Thực hành tạo Lambda Function bằng Python hoặc Node.js.<br>- Kiểm tra kết quả thực thi thông qua Test Event. | 14/07/2026 | 14/07/2026 | https://000111.awsstudygroup.com/1-lambda-function/ |
+| 4 | - Tìm hiểu Amazon API Gateway.<br>- Tạo REST API kết nối với AWS Lambda.<br>- Kiểm tra việc gọi API từ trình duyệt hoặc Postman. | 15/07/2026 | 15/07/2026 | https://000111.awsstudygroup.com/2-api-gateway/ |
+| 5 | - Tìm hiểu cách tích hợp Lambda với các dịch vụ AWS như Amazon S3 và Amazon CloudWatch.<br>- Thực hành cấu hình Trigger cho Lambda Function.<br>- Theo dõi quá trình thực thi thông qua CloudWatch Logs. | 16/07/2026 | 16/07/2026 | https://000111.awsstudygroup.com/3-event-source/ |
+| 6 | - Kiểm tra toàn bộ ứng dụng Serverless đã xây dựng.<br>- Khắc phục các lỗi phát sinh trong quá trình triển khai.<br>- Tổng hợp kiến thức và hoàn thành bài thực hành tuần 10. | 17/07/2026 | 17/07/2026 | https://000111.awsstudygroup.com/4-monitoring/ |
 ### Kết quả đạt được tuần 10:
 
 - Hiểu được mô hình Serverless Computing và những lợi ích khi triển khai ứng dụng không cần quản lý máy chủ. 

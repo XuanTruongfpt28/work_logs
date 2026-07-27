@@ -15,12 +15,12 @@ pre: " <b> 1.12 </b> "
 - Hoàn thiện báo cáo, tài liệu và các bài thực hành. 
 - Đánh giá kết quả đạt được sau 12 tuần thực tập.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn tập toàn bộ kiến thức đã học từ tuần 1 đến tuần 11.<br>- Rà soát lại các bài thực hành và tài liệu ghi chú trong quá trình học.<br>- Lên kế hoạch hoàn thiện báo cáo thực tập. | 27/07/2026 | 27/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Kiểm tra lại các dịch vụ AWS đã triển khai như EC2, VPC, S3, RDS, IAM và CloudFormation.<br>- Thực hành triển khai lại một hệ thống hoàn chỉnh dựa trên các kiến thức đã học. | 28/07/2026 | 28/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Kiểm tra hoạt động của hệ thống sau khi triển khai.<br>- Đánh giá khả năng kết nối giữa các dịch vụ AWS.<br>- Ghi nhận những vấn đề gặp phải và cách khắc phục. | 29/07/2026 | 29/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Hoàn thiện Worklog, tài liệu thực tập và các bài thực hành.<br>- Tổng hợp kiến thức, hình ảnh minh họa và kết quả đạt được.<br>- Chuẩn bị nội dung cho buổi báo cáo hoặc đánh giá cuối kỳ. | 30/07/2026 | 30/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập toàn bộ kiến thức đã học từ tuần 1 đến tuần 11.<br>- Rà soát lại các bài thực hành và tài liệu ghi chú trong quá trình học.<br>- Lên kế hoạch hoàn thiện báo cáo thực tập. | 27/07/2026 | 27/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - Kiểm tra lại các dịch vụ AWS đã triển khai như EC2, VPC, S3, RDS, IAM và CloudFormation.<br>- Thực hành triển khai lại một hệ thống hoàn chỉnh dựa trên các kiến thức đã học. | 28/07/2026 | 28/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Kiểm tra hoạt động của hệ thống sau khi triển khai.<br>- Đánh giá khả năng kết nối giữa các dịch vụ AWS.<br>- Ghi nhận những vấn đề gặp phải và cách khắc phục. | 29/07/2026 | 29/07/2026 | https://cloudjourney.awsstudygroup.com/3-operate/ |
+| 5 | - Hoàn thiện Worklog, tài liệu thực tập và các bài thực hành.<br>- Tổng hợp kiến thức, hình ảnh minh họa và kết quả đạt được.<br>- Chuẩn bị nội dung cho buổi báo cáo hoặc đánh giá cuối kỳ. | 30/07/2026 | 30/07/2026 | https://cloudjourney.awsstudygroup.com/ |
 | 6 | - Rà soát toàn bộ báo cáo và các tài liệu liên quan.<br>- Tổng kết quá trình thực tập, tự đánh giá những kiến thức và kỹ năng đã đạt được.<br>- Hoàn thành chương trình thực tập. | 31/07/2026 | 31/07/2026 | https://cloudjourney.awsstudygroup.com/ |
 
 ### Kết quả đạt được tuần 12:

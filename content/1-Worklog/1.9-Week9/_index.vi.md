@@ -17,13 +17,13 @@ pre: " <b> 1.9. </b> "
 - Thực hành tạo CloudWatch Dashboard và CloudWatch Alarm. 
 - Tìm hiểu cách CloudTrail ghi nhận các hoạt động và API trên tài khoản AWS.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn tập kiến thức về quy trình CI/CD đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Amazon CloudWatch và AWS CloudTrail.<br>- Nghiên cứu vai trò của việc giám sát và ghi log trong môi trường Cloud. | 06/07/2026 | 06/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Tìm hiểu CloudWatch Metrics, CloudWatch Logs và Dashboard.<br>- Thực hành theo dõi hiệu năng của EC2 Instance.<br>- Tạo Dashboard để hiển thị các chỉ số giám sát. | 07/07/2026 | 07/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Cấu hình CloudWatch Alarm dựa trên CPU Utilization và các chỉ số hệ thống.<br>- Thiết lập thông báo qua Amazon SNS.<br>- Kiểm tra hoạt động của Alarm. | 08/07/2026 | 08/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Tìm hiểu AWS CloudTrail.<br>- Bật CloudTrail và theo dõi lịch sử các API Call.<br>- Phân tích các hoạt động của người dùng và tài nguyên AWS thông qua CloudTrail. | 09/07/2026 | 09/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Kiểm tra lại Dashboard, Alarm và CloudTrail đã cấu hình.<br>- Tổng hợp kết quả theo dõi và phân tích log.<br>- Hoàn thành bài thực hành và tổng kết kiến thức của tuần. | 10/07/2026 | 10/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập kiến thức về CI/CD đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Amazon CloudWatch và AWS CloudTrail.<br>- Hiểu vai trò của giám sát và ghi log trong môi trường điện toán đám mây. | 06/07/2026 | 06/07/2026 | https://000078.awsstudygroup.com/ |
+| 3 | - Tìm hiểu CloudWatch Metrics, Logs và Dashboards.<br>- Thực hành giám sát hiệu năng của EC2 Instance.<br>- Tạo Dashboard tùy chỉnh bằng Amazon CloudWatch. | 07/07/2026 | 07/07/2026 | https://000078.awsstudygroup.com/2-create-dashboard/ |
+| 4 | - Cấu hình CloudWatch Alarm dựa trên CPU Utilization và Memory Usage.<br>- Kiểm tra thông báo cảnh báo thông qua Amazon SNS.<br>- Theo dõi trạng thái Alarm và các Metrics. | 08/07/2026 | 08/07/2026 | https://000078.awsstudygroup.com/3-create-alarm/ |
+| 5 | - Tìm hiểu AWS CloudTrail.<br>- Kích hoạt CloudTrail và xem lại các hoạt động API đã được ghi nhận.<br>- Phân tích hoạt động của người dùng và các sự kiện trong tài khoản AWS thông qua CloudTrail Logs. | 09/07/2026 | 09/07/2026 | https://000078.awsstudygroup.com/4-cloudtrail/ |
+| 6 | - Kiểm tra lại cấu hình giám sát và ghi log.<br>- Xác minh CloudWatch Dashboard, Alarm và CloudTrail Logs.<br>- Tổng hợp kiến thức đã học và hoàn thành bài thực hành tuần 9. | 10/07/2026 | 10/07/2026 | https://000078.awsstudygroup.com/5-clean-up/ |
 
 ### Kết quả đạt được tuần 9:
 - Hiểu được vai trò của Amazon CloudWatch và AWS CloudTrail trong việc giám sát, ghi log và quản lý hoạt động của các tài nguyên trên AWS. 

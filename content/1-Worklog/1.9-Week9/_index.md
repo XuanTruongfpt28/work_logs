@@ -16,13 +16,13 @@ pre: " <b> 1.9. </b> "
 - Practice creating CloudWatch alarms and dashboards. 
 - Learn how CloudTrail records user activities and API calls for auditing purposes.
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review the CI/CD concepts learned in the previous week.<br>- Learn the fundamentals of Amazon CloudWatch and AWS CloudTrail.<br>- Understand the importance of monitoring and logging in cloud environments. | 06/07/2026 | 06/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Learn about CloudWatch Metrics, Logs, and Dashboards.<br>- Practice monitoring EC2 instance performance.<br>- Create custom CloudWatch dashboards. | 07/07/2026 | 07/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Configure CloudWatch Alarms based on CPU utilization and memory usage.<br>- Test alarm notifications using Amazon SNS.<br>- Review alarm status and metrics. | 08/07/2026 | 08/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Learn about AWS CloudTrail.<br>- Enable CloudTrail and review recorded API activities.<br>- Analyze user actions and account events through CloudTrail logs. | 09/07/2026 | 09/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Review monitoring and logging configurations.<br>- Verify CloudWatch dashboards, alarms, and CloudTrail logs.<br>- Summarize the knowledge learned and complete the Week 9 hands-on exercises. | 10/07/2026 | 10/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Review the CI/CD concepts learned in the previous week.<br>- Learn the fundamentals of Amazon CloudWatch and AWS CloudTrail.<br>- Understand the importance of monitoring and logging in cloud environments. | 06/07/2026 | 06/07/2026 | https://000078.awsstudygroup.com/ |
+| 3 | - Learn about CloudWatch Metrics, Logs, and Dashboards.<br>- Practice monitoring EC2 instance performance.<br>- Create custom CloudWatch Dashboards. | 07/07/2026 | 07/07/2026 | https://000078.awsstudygroup.com/2-create-dashboard/ |
+| 4 | - Configure CloudWatch Alarms based on CPU utilization and memory usage.<br>- Test alarm notifications using Amazon SNS.<br>- Review alarm status and metrics. | 08/07/2026 | 08/07/2026 | https://000078.awsstudygroup.com/3-create-alarm/ |
+| 5 | - Learn about AWS CloudTrail.<br>- Enable CloudTrail and review recorded API activities.<br>- Analyze user actions and account events through CloudTrail logs. | 09/07/2026 | 09/07/2026 | https://000078.awsstudygroup.com/4-cloudtrail/ |
+| 6 | - Review monitoring and logging configurations.<br>- Verify CloudWatch dashboards, alarms, and CloudTrail logs.<br>- Summarize the knowledge learned and complete the Week 9 hands-on exercises. | 10/07/2026 | 10/07/2026 | https://000078.awsstudygroup.com/5-clean-up/ |
 
 ### Week 9 Achievements:
 - Understood the importance of monitoring and logging for maintaining reliable and secure cloud applications. 

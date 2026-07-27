@@ -17,13 +17,13 @@ pre: " <b> 1.3. </b> "
 - Triển khai và kiểm tra kết nối của EC2 trong môi trường VPC.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn lại kiến thức về IAM đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Amazon VPC và vai trò của VPC trong AWS.<br>- Nghiên cứu các khái niệm CIDR, địa chỉ IPv4 và kiến trúc mạng trong AWS. | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Thực hành tạo VPC mới.<br>- Tạo Public Subnet và Private Subnet.<br>- Tìm hiểu cách hoạt động của Route Table và mối liên hệ giữa các thành phần trong VPC. | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Tạo và cấu hình Internet Gateway.<br>- Liên kết Route Table với các Subnet.<br>- Kiểm tra khả năng kết nối Internet của Public Subnet. | 27/05/2026 | 27/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Triển khai EC2 trong VPC vừa tạo.<br>- Cấu hình Security Group và Network ACL.<br>- Kiểm tra kết nối SSH đến EC2 và xác nhận các thiết lập mạng hoạt động đúng. | 28/05/2026 | 28/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-  | 6 | - Rà soát lại toàn bộ kiến trúc VPC đã xây dựng.<br>- Kiểm tra và khắc phục các lỗi cấu hình nếu có.<br>- Hoàn thành bài thực hành và tổng hợp kiến thức đã học trong tuần. | 29/05/2026 | 29/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | ---------- | --------------- | ------------------ |
+| 2 | - Ôn tập kiến thức IAM đã học ở Tuần 2.<br>- Tìm hiểu các khái niệm cơ bản về Amazon VPC và mạng trên nền tảng Cloud.<br>- Hiểu về CIDR, địa chỉ IPv4 và kiến trúc VPC. | 25/05/2026 | 25/05/2026 | https://000011.awsstudygroup.com/vi/1-introduce/ |
+| 3 | - Tạo một VPC tùy chỉnh.<br>- Cấu hình Public Subnet và Private Subnet.<br>- Tìm hiểu cách Route Table hoạt động trong VPC. | 26/05/2026 | 26/05/2026 | https://000011.awsstudygroup.com/vi/3-createvpc/ |
+| 4 | - Tạo và cấu hình Internet Gateway.<br>- Liên kết Route Table với các Subnet.<br>- Kiểm tra kết nối Internet từ Public Subnet. | 27/05/2026 | 27/05/2026 | https://000011.awsstudygroup.com/vi/4-creategateway/ |
+| 5 | - Khởi tạo một EC2 Instance trong VPC vừa tạo.<br>- Cấu hình Security Group và Network ACL.<br>- Kiểm tra kết nối SSH tới EC2 Instance. | 28/05/2026 | 28/05/2026 | https://000011.awsstudygroup.com/vi/5-launchinstance/ |
+| 6 | - Ôn tập kiến trúc VPC đã xây dựng trong tuần.<br>- Xử lý các lỗi mạng nếu có.<br>- Hoàn thành bài thực hành và tổng kết kiến thức đã học. | 29/05/2026 | 29/05/2026 | https://000011.awsstudygroup.com/vi/6-cleanup/ |
 
 
 ### Kết quả đạt được tuần 3:

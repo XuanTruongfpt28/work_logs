@@ -17,13 +17,13 @@ pre: " <b> 1.5. </b> "
 - Tìm hiểu cách kết nối và quản lý cơ sở dữ liệu trên nền tảng AWS.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn lại kiến thức về Amazon S3 đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Amazon RDS và các trường hợp sử dụng phổ biến.<br>- So sánh Amazon RDS với việc tự triển khai cơ sở dữ liệu trên máy chủ EC2. | 08/06/2026 | 08/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Tìm hiểu các hệ quản trị cơ sở dữ liệu được Amazon RDS hỗ trợ như MySQL, PostgreSQL, MariaDB, SQL Server và Oracle.<br>- Nghiên cứu quy trình tạo một RDS Instance. | 09/06/2026 | 09/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Thực hành tạo Amazon RDS Instance.<br>- Cấu hình VPC, Security Group và thông tin đăng nhập cho cơ sở dữ liệu.<br>- Kết nối đến cơ sở dữ liệu bằng công cụ quản lý cơ sở dữ liệu. | 10/06/2026 | 10/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Tìm hiểu Automated Backup, Snapshot và Multi-AZ Deployment.<br>- Tìm hiểu cách giám sát cơ sở dữ liệu bằng Amazon CloudWatch.<br>- Thực hành sao lưu và khôi phục cơ sở dữ liệu. | 11/06/2026 | 11/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Kiểm tra lại toàn bộ cấu hình của Amazon RDS.<br>- Thực hành kết nối và quản lý cơ sở dữ liệu.<br>- Hoàn thành bài thực hành và tổng hợp kiến thức của tuần. | 12/06/2026 | 12/06/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
+| 2 | - Ôn tập kiến thức về Amazon S3 đã học ở tuần trước.<br>- Tìm hiểu các khái niệm cơ bản của Amazon RDS và các trường hợp sử dụng phổ biến.<br>- So sánh Amazon RDS với các hệ quản trị cơ sở dữ liệu tự quản lý truyền thống. | 08/06/2026 | 08/06/2026 | https://000005.awsstudygroup.com/vi/1-introduce/ |
+| 3 | - Tìm hiểu các hệ quản trị cơ sở dữ liệu được Amazon RDS hỗ trợ như MySQL, PostgreSQL, MariaDB, SQL Server và Oracle.<br>- Học các bước chuẩn bị trước khi triển khai Amazon RDS. | 09/06/2026 | 09/06/2026 | https://000005.awsstudygroup.com/vi/2-prerequiste/ |
+| 4 | - Khởi tạo một Amazon RDS Instance.<br>- Cấu hình mạng, Security Group và thông tin đăng nhập cơ sở dữ liệu.<br>- Thực hành kết nối đến cơ sở dữ liệu bằng công cụ quản lý cơ sở dữ liệu. | 10/06/2026 | 10/06/2026 | https://000005.awsstudygroup.com/vi/3-accessrds/ |
+| 5 | - Tìm hiểu cách chỉnh sửa và quản lý Amazon RDS.<br>- Thực hành thay đổi cấu hình của RDS Instance.<br>- Tìm hiểu cách quản lý và tối ưu cơ sở dữ liệu trên Amazon RDS. | 11/06/2026 | 11/06/2026 | https://000005.awsstudygroup.com/vi/4-modifyrds/ |
+| 6 | - Ôn tập toàn bộ quá trình triển khai Amazon RDS.<br>- Kiểm tra kết nối và thực hiện các thao tác quản lý cơ sở dữ liệu.<br>- Dọn dẹp tài nguyên và tổng kết kiến thức đã học trong tuần. | 12/06/2026 | 12/06/2026 | https://000005.awsstudygroup.com/vi/5-cleanup/ |
 
 ### Kết quả đạt được tuần 5:
 - Hiểu được vai trò của Amazon Relational Database Service (Amazon RDS) và lợi ích của việc sử dụng dịch vụ cơ sở dữ liệu được quản lý trên AWS. 

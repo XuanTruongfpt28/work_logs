@@ -1,31 +1,65 @@
 ---
 title: "Blog 2"
-date: 2024-01-01
-weight: 1
+date: 2026-06-06
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Blog 2 – AWS Shield Advanced Attack Flow Logs trong việc giám sát tấn công DDoS
 
-# SESSION POLICIES TRONG AMAZON EKS POD IDENTITY
+## Giới thiệu
 
-Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+Trong quá trình thực tập, mình đã nghiên cứu và viết một bài blog với chủ đề **"AWS Shield Advanced Attack Flow Logs trong việc giám sát tấn công DDoS"**. Bài viết được thực hiện dựa trên bài giới thiệu chính thức của AWS nhằm tìm hiểu tính năng mới Attack Flow Logs của AWS Shield Advanced và cách tính năng này hỗ trợ doanh nghiệp theo dõi, phân tích cũng như điều tra các cuộc tấn công từ chối dịch vụ (DDoS).
 
-Các điểm chính cần nắm:
+Mục tiêu của bài blog là giúp bản thân hiểu rõ hơn về cơ chế giám sát lưu lượng tấn công trên AWS, đồng thời chia sẻ những kiến thức này với cộng đồng AWS Study Group.
 
-* Session policy là một IAM policy inline được chỉ định khi tạo hoặc cập nhật Pod Identity association.
-* Quyền hiệu quả = intersection (giao) giữa permissions của IAM role và session policy → session policy chỉ có thể thu hẹp, không thể mở rộng quyền.
-* Giúp tránh tình trạng over-permissioning khi reuse chung một IAM role cho nhiều workloads có nhu cầu khác nhau.
-* Hỗ trợ cả same-account và cross-account (qua IAM role chaining).
-* Giảm đáng kể số lượng IAM roles cần quản lý, tránh chạm giới hạn quota IAM trong cluster lớn.
-* Cấu hình dễ dàng qua AWS Management Console, AWS CLI hoặc AWS SDK khi tạo association giữa Kubernetes ServiceAccount và IAM role.
+## Quá trình thực hiện
 
-Tính năng này đặc biệt hữu ích khi bạn có nhiều ứng dụng chạy trên cùng một IAM role nhưng cần giới hạn quyền khác nhau (ví dụ: một pod chỉ đọc S3 bucket cụ thể, pod khác chỉ gọi một số API nhất định).
+Để hoàn thành bài viết, mình đã thực hiện các công việc sau:
+
+- Đọc bài viết chính thức trên AWS Security Blog.
+- Tìm hiểu về AWS Shield Advanced và các dịch vụ được bảo vệ.
+- Nghiên cứu cách hoạt động của Attack Flow Logs.
+- Tìm hiểu các trường dữ liệu được ghi nhận trong quá trình xảy ra tấn công DDoS.
+- Tổng hợp và trình bày lại nội dung theo góc nhìn của một sinh viên đang tìm hiểu về AWS Security.
+
+## Nội dung chính của bài viết
+
+Trong bài blog, mình đã trình bày các nội dung chính sau:
+
+- Giới thiệu AWS Shield Advanced và khả năng bảo vệ chống tấn công DDoS.
+- Khái niệm Attack Flow Logs và vai trò của tính năng này trong việc giám sát lưu lượng tấn công.
+- Các loại thông tin được ghi nhận như:
+  - Địa chỉ IP nguồn và đích.
+  - Giao thức mạng.
+  - Số lượng packet và byte.
+  - Quốc gia phát sinh lưu lượng.
+  - AWS Edge Location.
+  - Hành động giảm thiểu của AWS Shield.
+- Khả năng xuất dữ liệu đến Amazon S3, Amazon CloudWatch Logs và Amazon Data Firehose.
+- Khả năng tích hợp với Amazon Athena, CloudWatch Logs Insights và các hệ thống SIEM như Splunk để phục vụ điều tra và phân tích.
+
+## Kiến thức và kỹ năng đạt được
+
+Thông qua việc nghiên cứu và viết bài blog, mình đã:
+
+- Hiểu rõ hơn về dịch vụ AWS Shield Advanced.
+- Nắm được cách AWS ghi nhận và phân tích lưu lượng trong quá trình xảy ra tấn công DDoS.
+- Hiểu được vai trò của Attack Flow Logs trong việc điều tra và giám sát sự cố an ninh.
+- Nâng cao kỹ năng đọc tài liệu kỹ thuật chính thức của AWS.
+- Rèn luyện kỹ năng tổng hợp, phân tích và trình bày các nội dung kỹ thuật theo cách dễ hiểu.
+
+## Kết quả đạt được
+
+Thông qua hoạt động này, mình không chỉ củng cố kiến thức về AWS Shield Advanced mà còn hiểu rõ hơn quy trình giám sát, phân tích và xử lý các cuộc tấn công DDoS trong môi trường điện toán đám mây. Đồng thời, mình cũng cải thiện kỹ năng nghiên cứu tài liệu kỹ thuật và viết bài chia sẻ kiến thức.
 
 ...Hình ảnh...
 
-...Link...
+![AWS Shield Advanced Attack Flow Logs](/images/blog2.jpg)
+## Link bài viết
 
-...Hướng dẫn...
+-   https://www.facebook.com/groups/awsstudygroupfcj/posts/2175946893170271
+
+  ## Tài liệu tham khảo
+- AWS Security Blog:
+  https://aws.amazon.com/blogs/security/gain-visibility-into-ddos-attacks-with-flow-logs-in-aws-shield-advanced/

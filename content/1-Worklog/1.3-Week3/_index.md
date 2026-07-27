@@ -16,13 +16,13 @@ pre: " <b> 1.3. </b> "
 - Create and configure a custom VPC. 
 - Practice deploying AWS resources inside a VPC.
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review the IAM concepts learned in Week 2.<br>- Learn the basic concepts of Amazon VPC and cloud networking.<br>- Understand CIDR blocks, IPv4 addressing, and VPC architecture. | 25/05/2026 | 25/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Create a custom VPC.<br>- Configure Public and Private Subnets.<br>- Learn how Route Tables work within a VPC. | 26/05/2026 | 26/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Create and configure an Internet Gateway.<br>- Associate Route Tables with Subnets.<br>- Verify Internet connectivity from the Public Subnet. | 27/05/2026 | 27/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Launch an EC2 instance inside the custom VPC.<br>- Configure Security Groups and Network ACLs.<br>- Test SSH connectivity to the EC2 instance. | 28/05/2026 | 28/05/2026 | https://cloudjourney.awsstudygroup.com/ | 
-  | 6 | - Review the VPC architecture created during the week.<br>- Troubleshoot networking issues if any.<br>- Complete the hands-on lab and summarize the knowledge learned. | 29/05/2026 | 29/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | ---------- | --------------- | ------------------ |
+| 2 | - Review the IAM concepts learned in Week 2.<br>- Learn the basic concepts of Amazon VPC and cloud networking.<br>- Understand CIDR blocks, IPv4 addressing, and VPC architecture. | 25/05/2026 | 25/05/2026 | https://000011.awsstudygroup.com/vi/1-introduce/ |
+| 3 | - Create a custom VPC.<br>- Configure Public and Private Subnets.<br>- Learn how Route Tables work within a VPC. | 26/05/2026 | 26/05/2026 | https://000011.awsstudygroup.com/vi/3-createvpc/ |
+| 4 | - Create and configure an Internet Gateway.<br>- Associate Route Tables with Subnets.<br>- Verify Internet connectivity from the Public Subnet. | 27/05/2026 | 27/05/2026 | https://000011.awsstudygroup.com/vi/4-creategateway/ |
+| 5 | - Launch an EC2 instance inside the custom VPC.<br>- Configure Security Groups and Network ACLs.<br>- Test SSH connectivity to the EC2 instance. | 28/05/2026 | 28/05/2026 | https://000011.awsstudygroup.com/vi/5-launchinstance/ |
+| 6 | - Review the VPC architecture created during the week.<br>- Troubleshoot networking issues if any.<br>- Complete the hands-on lab and summarize the knowledge learned. | 29/05/2026 | 29/05/2026 | https://000011.awsstudygroup.com/vi/6-cleanup/ |s
 ### Week 3 Achievements:
 
 - Understood the purpose of Amazon Virtual Private Cloud (VPC) and its role in building secure and isolated cloud networks. 

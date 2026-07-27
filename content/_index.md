@@ -1,16 +1,12 @@
 ---
 title: "Internship Report"
-date: 2024-01-01
+date: 2026-05-11
 weight: 1
 chapter: false
 ---
 
     
 # Internship Report
-
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 ### Student Information:
 &emsp; **Full Name:** Tran Xuan Truong
@@ -31,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 11/05/2026 to 31/07/2026
 
-![Your profile picture](static/images/avatar.png)
+![Your profile picture](/images/avatar.png)
 
 ### Report Content
 

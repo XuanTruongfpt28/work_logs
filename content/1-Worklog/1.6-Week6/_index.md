@@ -17,14 +17,13 @@ pre: " <b> 1.6. </b> "
 - Learn how to build a highly available and scalable application architecture on AWS.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
+| Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review the Amazon RDS concepts learned in the previous week.<br>- Learn the fundamentals of Elastic Load Balancing (ELB) and the different types of load balancers available on AWS. | 15/06/2026 | 15/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Study how the Application Load Balancer (ALB) works.<br>- Practice creating a Target Group and configuring Health Checks for EC2 instances. | 16/06/2026 | 16/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Deploy an Application Load Balancer.<br>- Register multiple EC2 instances with the Target Group.<br>- Test traffic distribution across the EC2 instances. | 17/06/2026 | 17/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Learn about Amazon EC2 Auto Scaling.<br>- Create a Launch Template and an Auto Scaling Group.<br>- Configure scaling policies based on CPU utilization. | 18/06/2026 | 18/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Verify the operation of the Load Balancer and Auto Scaling Group.<br>- Simulate application traffic to observe Scale Out and Scale In events.<br>- Review the week's topics and complete the hands-on lab. | 19/06/2026 | 19/06/2026 | https://cloudjourney.awsstudygroup.com/ |
-
+| 2 | - Review the Amazon RDS concepts learned in the previous week.<br>- Learn the fundamentals of Elastic Load Balancing (ELB) and the different types of load balancers available on AWS. | 15/06/2026 | 15/06/2026 | https://000058.awsstudygroup.com/en/1-introduce/ |
+| 3 | - Study how the Application Load Balancer (ALB) works.<br>- Practice creating a Target Group and configuring Health Checks for EC2 instances. | 16/06/2026 | 16/06/2026 | https://000058.awsstudygroup.com/en/2-prerequiste/ |
+| 4 | - Deploy an Application Load Balancer.<br>- Register multiple EC2 instances with the Target Group.<br>- Test traffic distribution across the EC2 instances. | 17/06/2026 | 17/06/2026 | https://000058.awsstudygroup.com/en/3-createalb/ |
+| 5 | - Learn about Amazon EC2 Auto Scaling.<br>- Create a Launch Template and an Auto Scaling Group.<br>- Configure scaling policies based on CPU utilization. | 18/06/2026 | 18/06/2026 | https://000058.awsstudygroup.com/en/4-createasg/ |
+| 6 | - Verify the operation of the Load Balancer and Auto Scaling Group.<br>- Simulate application traffic to observe Scale Out and Scale In events.<br>- Review the week's topics and complete the hands-on lab. | 19/06/2026 | 19/06/2026 | https://000058.awsstudygroup.com/en/5-cleanup/ |
 
 ### Week 6 Achievements:
 - Understood the purpose of Elastic Load Balancing (ELB) and its role in distributing incoming traffic across multiple EC2 instances. 

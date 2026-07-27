@@ -17,14 +17,13 @@ pre: " <b> 1.4. </b> "
 - Tìm hiểu các cơ chế bảo mật và phân quyền khi sử dụng S3.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn lại kiến thức về Amazon VPC đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Amazon S3 và các trường hợp sử dụng phổ biến.<br>- Tìm hiểu khái niệm Bucket, Object và Storage Class. | 01/06/2026 | 01/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Thực hành tạo S3 Bucket.<br>- Upload, tải xuống và xóa các Object.<br>- Tìm hiểu cách tổ chức dữ liệu trong Bucket. | 02/06/2026 | 02/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Tìm hiểu Bucket Policy và IAM Policy áp dụng cho Amazon S3.<br>- Thực hành cấu hình quyền truy cập cho Bucket.<br>- Kiểm tra quyền truy cập đối với các tài khoản khác nhau. | 03/06/2026 | 03/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Tìm hiểu Versioning và Lifecycle Rules.<br>- Thực hành bật Versioning cho Bucket.<br>- Tạo Lifecycle Rule để quản lý vòng đời dữ liệu. | 04/06/2026 | 04/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Thực hành lưu trữ và quản lý dữ liệu trên Amazon S3.<br>- Kiểm tra các thiết lập bảo mật của Bucket.<br>- Tổng hợp kiến thức và hoàn thành bài thực hành tuần 4. | 05/06/2026 | 05/06/2026 | https://cloudjourney.awsstudygroup.com/ |
-
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | ---------- | --------------- | ------------------ |
+| 2 | - Ôn tập kiến thức Amazon VPC đã học ở tuần trước.<br>- Tìm hiểu các khái niệm cơ bản về Amazon S3 và các trường hợp sử dụng phổ biến.<br>- Học về Bucket, Object và các Storage Class. | 01/06/2026 | 01/06/2026 | https://000009.awsstudygroup.com/vi/1-introduce/ |
+| 3 | - Tạo một Amazon S3 Bucket.<br>- Thực hành tải lên, tải xuống và xóa các Object.<br>- Tìm hiểu cách dữ liệu được tổ chức bên trong S3 Bucket. | 02/06/2026 | 02/06/2026 | https://000009.awsstudygroup.com/vi/3-createbucket/ |
+| 4 | - Tìm hiểu Bucket Policy và IAM Policy cho Amazon S3.<br>- Cấu hình quyền truy cập cho S3 Bucket.<br>- Kiểm tra quyền truy cập bằng các IAM User khác nhau. | 03/06/2026 | 03/06/2026 | https://000009.awsstudygroup.com/vi/4-bucketpolicy/ |
+| 5 | - Tìm hiểu S3 Versioning và Lifecycle Rules.<br>- Bật Versioning cho S3 Bucket.<br>- Tạo Lifecycle Rules để tự động quản lý các Object. | 04/06/2026 | 04/06/2026 | https://000009.awsstudygroup.com/vi/5-versioning/ |
+| 6 | - Thực hành lưu trữ và quản lý tệp trên Amazon S3.<br>- Kiểm tra lại các thiết lập bảo mật của S3 Bucket.<br>- Tổng kết kiến thức đã học và hoàn thành bài thực hành của Tuần 4. | 05/06/2026 | 05/06/2026 | https://000009.awsstudygroup.com/vi/6-cleanup/ |
 ### Kết quả đạt được tuần 4:
 
 - Hiểu được vai trò của Amazon S3 trong việc lưu trữ dữ liệu trên nền tảng AWS. 

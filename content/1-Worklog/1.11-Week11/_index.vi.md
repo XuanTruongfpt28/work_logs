@@ -16,13 +16,13 @@ pre: " <b> 1.11. </b> "
 - Thực hành xây dựng, lưu trữ và triển khai ứng dụng dạng Container trên AWS. 
 - Nắm được quy trình triển khai ứng dụng theo mô hình Container hóa.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn tập kiến thức về Serverless Computing đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Container và Docker.<br>- Nghiên cứu sự khác biệt giữa Virtual Machine và Container. | 20/07/2026 | 20/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Cài đặt Docker trên máy tính.<br>- Tìm hiểu các lệnh Docker cơ bản.<br>- Thực hành tạo Docker Image bằng Dockerfile và chạy Container trên môi trường cục bộ. | 21/07/2026 | 21/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Tìm hiểu Amazon Elastic Container Registry (Amazon ECR).<br>- Tạo Repository trên Amazon ECR.<br>- Thực hành đẩy Docker Image từ máy tính lên Amazon ECR. | 22/07/2026 | 22/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Tìm hiểu Amazon Elastic Container Service (Amazon ECS).<br>- Tạo ECS Cluster, Task Definition và Service.<br>- Thực hành triển khai ứng dụng Container lên Amazon ECS. | 23/07/2026 | 23/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Kiểm tra quá trình triển khai ứng dụng trên Amazon ECS.<br>- Theo dõi trạng thái của Container và xử lý các lỗi phát sinh.<br>- Tổng hợp kiến thức và hoàn thành bài thực hành tuần 11. | 24/07/2026 | 24/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập kiến thức về Serverless Computing đã học ở tuần trước.<br>- Tìm hiểu tổng quan về Containerization và Docker.<br>- Nghiên cứu sự khác nhau giữa máy ảo (Virtual Machine) và Container. | 20/07/2026 | 20/07/2026 | https://000068.awsstudygroup.com/ |
+| 3 | - Cài đặt Docker và tìm hiểu các lệnh Docker cơ bản.<br>- Thực hành tạo Docker Image bằng Dockerfile.<br>- Build và chạy Container trên máy cục bộ. | 21/07/2026 | 21/07/2026 | https://000068.awsstudygroup.com/1-install-docker/ |
+| 4 | - Tìm hiểu Amazon Elastic Container Registry (Amazon ECR).<br>- Tạo Private Container Repository.<br>- Đẩy Docker Image từ máy cục bộ lên Amazon ECR. | 22/07/2026 | 22/07/2026 | https://000068.awsstudygroup.com/2-amazon-ecr/ |
+| 5 | - Tìm hiểu Amazon Elastic Container Service (Amazon ECS).<br>- Tạo ECS Cluster, Task Definition và Service.<br>- Triển khai ứng dụng Container trên Amazon ECS. | 23/07/2026 | 23/07/2026 | https://000068.awsstudygroup.com/3-amazon-ecs/ |
+| 6 | - Kiểm tra việc triển khai ứng dụng Container.<br>- Theo dõi trạng thái Container và xử lý các lỗi phát sinh.<br>- Tổng hợp kiến thức đã học và hoàn thành bài thực hành tuần 11. | 24/07/2026 | 24/07/2026 | https://000068.awsstudygroup.com/4-clean-up/ |
 
 ### Kết quả đạt được tuần 11:
 

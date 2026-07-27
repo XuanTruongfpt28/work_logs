@@ -18,14 +18,15 @@ pre: " <b> 1.2. </b> "
 - Thực hành quản lý tài khoản và phân quyền trên AWS.
 - Làm quen với các nguyên tắc bảo mật cơ bản khi sử dụng AWS.
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Ôn lại kiến thức về EC2 và AWS CLI đã học ở tuần trước.<br>- Tìm hiểu tổng quan về AWS IAM và vai trò của dịch vụ trong việc quản lý quyền truy cập. | 18/05/2026 | 18/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 3 | - Nghiên cứu các thành phần của IAM gồm User, Group, Role và Policy.<br>- Tìm hiểu nguyên tắc Least Privilege trong việc cấp quyền cho người dùng. | 19/05/2026 | 19/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 4 | - Thực hành tạo IAM User và IAM Group.<br>- Gán Policy cho User và Group.<br>- Kiểm tra quyền truy cập của từng tài khoản. | 20/05/2026 | 20/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 5 | - Tìm hiểu AWS Multi-Factor Authentication (MFA).<br>- Tìm hiểu cách quản lý Access Key và các phương pháp tăng cường bảo mật tài khoản AWS.<br>- Thực hành cấu hình MFA cho tài khoản. | 21/05/2026 | 21/05/2026 | https://cloudjourney.awsstudygroup.com/ |
-| 6 | - Thực hành tạo IAM Role.<br>- Kiểm tra quyền truy cập giữa các tài khoản và dịch vụ AWS.<br>- Tổng hợp kiến thức và hoàn thành bài thực hành tuần 2. | 22/05/2026 | 22/05/2026 | https://cloudjourney.awsstudygroup.com/ |
+### Các công việc thực hiện trong tuần:
 
+| Ngày | Công việc | Ngày bắt đầu | Ngày hoàn thành | Tài liệu tham khảo |
+| --- | --- | --- | --- | --- |
+| 2 | - Ôn tập kiến thức AWS CLI và Amazon EC2 đã học ở Tuần 1.<br>- Tìm hiểu về AWS Identity and Access Management (IAM) và vai trò của IAM trong việc bảo mật tài nguyên AWS. | 18/05/2026 | 18/05/2026 | https://000004.awsstudygroup.com/vi/ |
+| 3 | - Tìm hiểu các thành phần cốt lõi của IAM gồm: Users, Groups, Roles và Policies.<br>- Học về nguyên tắc **Least Privilege (Quyền tối thiểu)** và tầm quan trọng của nguyên tắc này trong bảo mật Cloud. | 19/05/2026 | 19/05/2026 | https://000004.awsstudygroup.com/vi/2-prerequiste/ |
+| 4 | - Tạo IAM Users và IAM Groups.<br>- Gán Policies cho Users và Groups.<br>- Kiểm tra và xác minh quyền truy cập của từng tài khoản. | 20/05/2026 | 20/05/2026 | https://000004.awsstudygroup.com/vi/3-launchwindowsinstance/ |
+| 5 | - Tìm hiểu về xác thực đa yếu tố (MFA).<br>- Hiểu cách quản lý và bảo mật Access Keys.<br>- Thực hành bật MFA cho tài khoản AWS. | 21/05/2026 | 21/05/2026 | https://000057.awsstudygroup.com/vi/1-introduce/ |
+| 6 | - Tạo và kiểm thử IAM Roles.<br>- Thực hành phân quyền giữa các dịch vụ AWS bằng IAM Roles.<br>- Ôn tập và tổng kết kiến thức đã học trong tuần. | 22/05/2026 | 22/05/2026 | https://000057.awsstudygroup.com/vi/ |
 
 ### Kết quả đạt được tuần 2:
 - Hiểu được vai trò của AWS Identity and Access Management (IAM) trong việc quản lý danh tính và quyền truy cập vào tài nguyên AWS.

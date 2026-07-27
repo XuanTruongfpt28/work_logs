@@ -18,13 +18,13 @@ pre: " <b> 1.5. </b> "
 - Learn how to connect applications to a relational database hosted on AWS.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
+| Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review the Amazon S3 concepts learned in the previous week.<br>- Learn the fundamentals of Amazon RDS and its common use cases.<br>- Compare Amazon RDS with traditional self-managed databases. | 08/06/2026 | 08/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Study the supported database engines, including MySQL, PostgreSQL, MariaDB, SQL Server, and Oracle.<br>- Learn the process of creating an Amazon RDS instance. | 09/06/2026 | 09/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Launch an Amazon RDS instance.<br>- Configure networking, security groups, and database credentials.<br>- Practice connecting to the database using a database client. | 10/06/2026 | 10/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Learn about automated backups, snapshots, and Multi-AZ deployment.<br>- Explore database monitoring through Amazon CloudWatch.<br>- Practice managing database backups. | 11/06/2026 | 11/06/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Review the RDS deployment.<br>- Test database connectivity and management tasks.<br>- Complete the Week 5 hands-on exercises and summarize the knowledge learned. | 12/06/2026 | 12/06/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 2 | - Review the Amazon S3 concepts learned in the previous week.<br>- Learn the fundamentals of Amazon RDS and its common use cases.<br>- Compare Amazon RDS with traditional self-managed databases. | 08/06/2026 | 08/06/2026 | https://000005.awsstudygroup.com/vi/1-introduce/ |
+| 3 | - Study the supported database engines, including MySQL, PostgreSQL, MariaDB, SQL Server, and Oracle.<br>- Learn the process of creating an Amazon RDS instance. | 09/06/2026 | 09/06/2026 | https://000005.awsstudygroup.com/vi/2-prerequiste/ |
+| 4 | - Launch an Amazon RDS instance.<br>- Configure networking, security groups, and database credentials.<br>- Practice connecting to the database using a database client. | 10/06/2026 | 10/06/2026 | https://000005.awsstudygroup.com/vi/3-accessrds/ |
+| 5 | - Learn about automated backups, snapshots, and Multi-AZ deployment.<br>- Explore database monitoring through Amazon CloudWatch.<br>- Practice managing database backups. | 11/06/2026 | 11/06/2026 | https://000005.awsstudygroup.com/vi/4-modifyrds/ |
+| 6 | - Review the RDS deployment.<br>- Test database connectivity and management tasks.<br>- Complete the Week 5 hands-on exercises and summarize the knowledge learned. | 12/06/2026 | 12/06/2026 | https://000005.awsstudygroup.com/vi/5-cleanup/ |
 ### Week 5 Achievements:
 - Understood the purpose of Amazon Relational Database Service (Amazon RDS) and the advantages of using managed database services on AWS. 
 - Learned the basic concepts of Amazon RDS, including: 

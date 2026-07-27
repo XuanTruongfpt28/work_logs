@@ -17,13 +17,13 @@ pre: " <b> 1.12. </b> "
 - Evaluate the knowledge and skills acquired after 12 weeks of internship.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review all topics covered from Week 1 to Week 11.<br>- Revisit hands-on labs and study notes completed throughout the internship.<br>- Plan and organize the internship report. | 27/07/2026 | 27/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Review AWS services that have been deployed, including EC2, VPC, S3, RDS, IAM, and CloudFormation.<br>- Practice deploying a complete AWS environment by integrating the services learned during the internship. | 28/07/2026 | 28/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Verify the functionality of the deployed system.<br>- Evaluate the integration between AWS services.<br>- Document issues encountered and the corresponding solutions. | 29/07/2026 | 29/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Complete the internship worklog, documentation, and hands-on exercises.<br>- Organize screenshots, deployment results, and supporting materials.<br>- Prepare the final presentation or internship evaluation materials. | 30/07/2026 | 30/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Review the entire internship report and related documents.<br>- Reflect on the knowledge and practical skills gained during the internship.<br>- Complete the internship program. | 31/07/2026 | 31/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Review all AWS knowledge learned from Week 1 to Week 11.<br>- Revisit the hands-on labs and personal notes completed throughout the internship.<br>- Plan the completion of the internship report. | 27/07/2026 | 27/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 3 | - Review the AWS services implemented during the internship, including EC2, VPC, S3, RDS, IAM, and CloudFormation.<br>- Practice redeploying a complete AWS solution based on the knowledge acquired throughout the program. | 28/07/2026 | 28/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 4 | - Verify the functionality of the deployed system.<br>- Evaluate connectivity and integration among AWS services.<br>- Document any issues encountered and the corresponding solutions. | 29/07/2026 | 29/07/2026 | https://cloudjourney.awsstudygroup.com/3-operate/ |
+| 5 | - Complete the Worklog, internship documentation, and hands-on exercises.<br>- Organize the knowledge gained, supporting screenshots, and implementation results.<br>- Prepare presentation materials for the final internship evaluation. | 30/07/2026 | 30/07/2026 | https://cloudjourney.awsstudygroup.com/ |
+| 6 | - Perform a final review of the internship report and all related documentation.<br>- Summarize the internship experience and evaluate the knowledge and skills acquired.<br>- Complete the internship program. | 31/07/2026 | 31/07/2026 | https://cloudjourney.awsstudygroup.com/ |
 ### Week 12 Achievements:
 
 - Reviewed and consolidated the knowledge gained throughout the 12-week internship program. 

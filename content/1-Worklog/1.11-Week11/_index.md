@@ -16,14 +16,13 @@ pre: " <b> 1.11. </b> "
 - Practice building, storing, and deploying containerized applications on AWS. 
 - Understand the benefits of using containers in cloud application deployment.
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Review the Serverless Computing concepts learned in the previous week.<br>- Learn the fundamentals of containerization and Docker.<br>- Study the differences between virtual machines and containers. | 20/07/2026 | 20/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 3 | - Install Docker and learn basic Docker commands.<br>- Create Docker Images using Dockerfiles.<br>- Practice building and running containers locally. | 21/07/2026 | 21/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 4 | - Learn about Amazon Elastic Container Registry (Amazon ECR).<br>- Create a private container repository.<br>- Push Docker Images from the local machine to Amazon ECR. | 22/07/2026 | 22/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 5 | - Learn about Amazon Elastic Container Service (Amazon ECS).<br>- Create an ECS Cluster, Task Definition, and Service.<br>- Deploy a containerized application using Amazon ECS. | 23/07/2026 | 23/07/2026 | https://cloudjourney.awsstudygroup.com/ | 
-| 6 | - Verify the deployment of the containerized application.<br>- Monitor container status and troubleshoot deployment issues.<br>- Summarize the knowledge learned and complete the Week 11 hands-on exercises. | 24/07/2026 | 24/07/2026 | https://cloudjourney.awsstudygroup.com/ |
-
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Review the Serverless Computing concepts learned in the previous week.<br>- Learn the fundamentals of containerization and Docker.<br>- Study the differences between virtual machines and containers. | 20/07/2026 | 20/07/2026 | https://000068.awsstudygroup.com/ |
+| 3 | - Install Docker and learn basic Docker commands.<br>- Create Docker Images using Dockerfiles.<br>- Practice building and running containers locally. | 21/07/2026 | 21/07/2026 | https://000068.awsstudygroup.com/1-install-docker/ |
+| 4 | - Learn about Amazon Elastic Container Registry (Amazon ECR).<br>- Create a private container repository.<br>- Push Docker Images from the local machine to Amazon ECR. | 22/07/2026 | 22/07/2026 | https://000068.awsstudygroup.com/2-amazon-ecr/ |
+| 5 | - Learn about Amazon Elastic Container Service (Amazon ECS).<br>- Create an ECS Cluster, Task Definition, and Service.<br>- Deploy a containerized application using Amazon ECS. | 23/07/2026 | 23/07/2026 | https://000068.awsstudygroup.com/3-amazon-ecs/ |
+| 6 | - Verify the deployment of the containerized application.<br>- Monitor container status and troubleshoot deployment issues.<br>- Summarize the knowledge learned and complete the Week 11 hands-on exercises. | 24/07/2026 | 24/07/2026 | https://000068.awsstudygroup.com/4-clean-up/ |
 ### Week 11 Achievements:
 
 - Understood the concept of containerization and its advantages over traditional virtual machine deployment. 
