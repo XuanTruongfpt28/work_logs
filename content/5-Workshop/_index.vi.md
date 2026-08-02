@@ -1,33 +1,38 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-05-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# AI AWS Advisor (Enterprise SaaS)
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+**AI AWS Advisor** là nền tảng B2B SaaS (Software as a Service) cấp doanh nghiệp ứng dụng AI thế hệ mới (**Amazon Bedrock - Claude 3 Haiku**) để tự động quét, phân tích và đưa ra khuyến nghị tối ưu hóa cho hạ tầng AWS của khách hàng.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Hệ thống giải quyết 3 thách thức cốt lõi trong Vận hành Đám mây (CloudOps):
+1. **Bảo mật (Security):** Phát hiện lỗ hổng bảo mật như S3 Buckets công khai, IAM Roles cấp thừa quyền.
+2. **Tối ưu Chi phí (Cost Optimization):** Phát hiện lãng phí tài nguyên (EC2 nhàn rỗi, EBS Volume không gắn vào máy chủ, Elastic IP không sử dụng) và tính toán số tiền tiết kiệm hàng tháng.
+3. **Hiệu năng & Độ tin cậy (Performance & Reliability):** Đề xuất cải tiến kiến trúc (ví dụ: cấu hình Provisioned Concurrency cho AWS Lambda để tránh cold start).
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+---
 
-#### Nội dung
+#### Đặc điểm Kỹ thuật & Nổi bật
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+- **Bảo mật Zero-Trust (Cross-Account STS):** Sử dụng `sts:AssumeRole` tạo credential tạm thời ngắn hạn, không lưu giữ Access Key dài hạn của khách hàng.
+- **Kiến trúc Serverless 100%:** Xây dựng trên AWS Lambda, Amazon API Gateway, Amazon EventBridge giúp chi phí duy trì nhàn rỗi xấp xỉ $0.
+- **Thiết kế Multi-Table (Amazon DynamoDB):** Bốn bảng chuyên biệt (projects, resources, insights, alerts) dùng chung `project_id` Partition Key để cách ly tenant, cùng 1 GSI (`resource_type-index`) trên `ai-advisor-resources` cho truy vấn cross-project.
+- **Generative AI Copilot (Amazon Bedrock):** Tích hợp Claude 3 Haiku tự động tạo báo cáo và trò chuyện trực tiếp về hạ tầng.
+
+---
+
+#### Nội dung Báo cáo
+
+1. [Tổng quan Workshop](5.1-workshop-overview/)
+2. [Yêu cầu & Chuẩn bị Môi trường](5.2-prerequiste/)
+3. [Kiến trúc & Thiết kế Kỹ thuật](5.3-architecture-design/)
+4. [Chiến lược Triển khai & Tích hợp Khách hàng](5.4-deployment-strategy/)
+5. [Kiểm thử & Đảm bảo Chất lượng](5.5-quality-assurance/)
+6. [Vận hành, Dọn dẹp & Đánh giá Kiến trúc](5.6-operations-cleanup/)

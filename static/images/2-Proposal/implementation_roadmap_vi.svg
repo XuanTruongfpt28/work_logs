@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520">
+  <defs>
+    <linearGradient id="bgGradvi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <linearGradient id="boxGradvi" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <filter id="shadowvi" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowvi" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e3a8a"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="520" fill="url(#bgGradvi)"/>
+  <text x="700" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e3a8a">
+    Lộ trình Triển khai 3 Tháng
+  </text>
+  <g filter="url(#shadowvi)">
+    <rect x="80" y="80" width="380" height="130" rx="12" fill="url(#boxGradvi)" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="112" cy="112" r="20" fill="#1e3a8a"/>
+    <text x="112" y="118" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">M1</text>
+    <text x="150" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">Kiến trúc, Trust Policy, SAM IaC, Schema</text>
+    <text x="150" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">Thiết kế kiến trúc + Trust Policy + SAM CLI</text>
+  </g>
+  <line x1="270" y1="216" x2="270" y2="278" stroke="#1e3a8a" stroke-width="3" marker-end="url(#arrowvi)"/>
+  <g filter="url(#shadowvi)">
+    <rect x="80" y="290" width="380" height="130" rx="12" fill="url(#boxGradvi)" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="112" cy="322" r="20" fill="#1e3a8a"/>
+    <text x="112" y="328" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">M2</text>
+    <text x="150" y="320" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">Collector Lambda, STS, Bedrock AI</text>
+    <text x="150" y="340" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">Data Collector Lambda + STS AssumeRole + Bedrock</text>
+  </g>
+  <line x1="270" y1="426" x2="270" y2="488" stroke="#1e3a8a" stroke-width="3" marker-end="url(#arrowvi)"/>
+  <g filter="url(#shadowvi)">
+    <rect x="80" y="500" width="380" height="130" rx="12" fill="url(#boxGradvi)" stroke="#3b82f6" stroke-width="2"/>
+    <circle cx="112" cy="532" r="20" fill="#1e3a8a"/>
+    <text x="112" y="538" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">M3</text>
+    <text x="150" y="530" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#0f172a">React Dashboard, AI Chatbot, Demo</text>
+    <text x="150" y="550" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">Dashboard React 18 + AI Copilot + Pytest</text>
+  </g>
+  <rect x="520" y="80" width="820" height="550" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="2" opacity="0.85"/>
+  <text x="540" y="110" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e3a8a">
+    Cột mốc Quan trọng
+  </text>
+  <circle cx="550" cy="158" r="10" fill="#3b82f6"/>
+  <text x="570" y="164" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">Tháng 1</text>
+  <text x="570" y="186" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">SAM IaC hoàn chỉnh, Trust Policy đã thiết lập, DynamoDB Multi-Table Schema (4 bảng + 1 GSI) đã xác định.</text>
+  <circle cx="550" cy="268" r="10" fill="#3b82f6"/>
+  <text x="570" y="274" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">Tháng 2</text>
+  <text x="570" y="296" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">Collector Lambda + STS AssumeRole + Bedrock AI Analyzer vận hành với test moto > 80%.</text>
+  <circle cx="550" cy="378" r="10" fill="#3b82f6"/>
+  <text x="570" y="384" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="bold" fill="#0f172a">Tháng 3</text>
+  <text x="570" y="406" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#475569">Demo cuối kỳ với React Dashboard + AI Chatbot được E2E test trên 10 dự án thực tế.</text>
+</svg>
