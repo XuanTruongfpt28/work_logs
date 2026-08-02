@@ -24,7 +24,7 @@ sam build --use-container
 
 **Hình 1 - Kết quả SAM CLI `sam build --use-container` (Build Succeeded):**
 
-<img src="/aws-ojt-workshop-ja/images/5.4-Deployment-strategy/sam_build.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam build --use-container chạy thành công: Building codeuri backend, Running CustomMakeBuilder for Python function, Build Succeeded, Built Artifacts .aws-sam/build, Built Template .aws-sam/build/template.yaml" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.4-Deployment-strategy/sam_build.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam build --use-container chạy thành công: Building codeuri backend, Running CustomMakeBuilder for Python function, Build Succeeded, Built Artifacts .aws-sam/build, Built Template .aws-sam/build/template.yaml" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ### Bước 2: Triển khai CloudFormation Stack
 Thực hiện triển khai theo hướng dẫn để khởi tạo API Gateway, Lambda Functions, DynamoDB, EventBridge và SNS.
@@ -35,7 +35,7 @@ sam deploy --guided
 
 **Hình 2 - Kết quả SAM CLI `sam deploy --guided` (Successfully created/updated stack):**
 
-<img src="/aws-ojt-workshop-ja/images/5.4-Deployment-strategy/sam_deploy.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam deploy --guided chạy thành công: 9 AWS resources được liệt kê (IAM roles, Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule), CloudFormation changeset với các thao tác + Create, Successfully created/updated stack ai-aws-advisor-backend in us-east-1, Outputs có ApiEndpoint URL" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.4-Deployment-strategy/sam_deploy.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam deploy --guided chạy thành công: 9 AWS resources được liệt kê (IAM roles, Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule), CloudFormation changeset với các thao tác + Create, Successfully created/updated stack ai-aws-advisor-backend in us-east-1, Outputs có ApiEndpoint URL" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 Các tham số chính:
 - **Stack Name:** `ai-aws-advisor`
@@ -86,11 +86,11 @@ Các bước khách hàng thực hiện để kết nối tài khoản AWS cần
 
 **Hình 3 - Trang tóm tắt IAM Role phía khách hàng (đã che Account ID):**
 
-<img src="/aws-ojt-workshop-ja/images/5.4-Deployment-strategy/iam_audit_role_summary.png?v=2026-08-01-r1" alt="AWS IAM console hiển thị trang tóm tắt của AIAdvisorAuditRole trong tài khoản khách hàng - Role ARN arn:aws:iam::XXXXXXXXXXXX:role/AIAdvisorAuditRole, đã gắn managed policy ReadOnlyAccess và trusted entity là một AWS Account cụ thể" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.4-Deployment-strategy/iam_audit_role_summary.png?v=2026-08-01-r1" alt="AWS IAM console hiển thị trang tóm tắt của AIAdvisorAuditRole trong tài khoản khách hàng - Role ARN arn:aws:iam::XXXXXXXXXXXX:role/AIAdvisorAuditRole, đã gắn managed policy ReadOnlyAccess và trusted entity là một AWS Account cụ thể" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 **Hình 4 - Tab Trust relationships — JSON Trust policy (đã che Account ID):**
 
-<img src="/aws-ojt-workshop-ja/images/5.4-Deployment-strategy/iam_audit_role_trust_policy.png?v=2026-08-01-r1" alt="Tab Trust relationships của AIAdvisorAuditRole hiển thị JSON trust policy với Action sts:AssumeRole và Principal AWS arn:aws:iam::XXXXXXXXXXXX:root - chính là mẫu cross-account delegation mà AI AWS Advisor sử dụng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.4-Deployment-strategy/iam_audit_role_trust_policy.png?v=2026-08-01-r1" alt="Tab Trust relationships của AIAdvisorAuditRole hiển thị JSON trust policy với Action sts:AssumeRole và Principal AWS arn:aws:iam::XXXXXXXXXXXX:root - chính là mẫu cross-account delegation mà AI AWS Advisor sử dụng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 
@@ -171,7 +171,7 @@ EventBridge schedule theo giờ giữ data tươi ở background không cần op
 
 **Hình 6 - Dashboard sau scan đầu tiên thành công, hiển thị 4 KPI card và insight cho từng dự án được sinh bởi Bedrock Claude 3 Haiku:**
 
-<img src="/aws-ojt-workshop-ja/images/5.1-Workshop-overview/ui_dashboard_overview.png?v=2026-08-01-r4" alt="Trang Dashboard Overview của AI AWS Advisor sau lần customer scan đầu tiên thành công - hàng trên hiển thị 4 KPI card trực tiếp do Collector Lambda tính: System Health 78%, Resources 75, Critical Risks 4, Monthly Savings $2.5K. Tab switcher đang ở ProDev (active, tím), Beta Dev và Production. Mỗi tab load AI Analysis panel với severity counts (High: 4, Medium: 0, Low: 0) và ô AI Chat. Dữ liệu được Bedrock Claude 3 Haiku sinh từ raw resource lưu trong bảng DynamoDB ai-advisor-resources." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.1-Workshop-overview/ui_dashboard_overview.png?v=2026-08-01-r4" alt="Trang Dashboard Overview của AI AWS Advisor sau lần customer scan đầu tiên thành công - hàng trên hiển thị 4 KPI card trực tiếp do Collector Lambda tính: System Health 78%, Resources 75, Critical Risks 4, Monthly Savings $2.5K. Tab switcher đang ở ProDev (active, tím), Beta Dev và Production. Mỗi tab load AI Analysis panel với severity counts (High: 4, Medium: 0, Low: 0) và ô AI Chat. Dữ liệu được Bedrock Claude 3 Haiku sinh từ raw resource lưu trong bảng DynamoDB ai-advisor-resources." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 

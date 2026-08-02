@@ -25,7 +25,7 @@ sam delete
 
 **Hình 1 - Kết quả SAM CLI `sam delete --no-prompts` (Successfully deleted stack):**
 
-<img src="/aws-ojt-workshop-ja/images/5.6-Operations-cleanup/sam_delete.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam delete: CloudFormation stack deletion với 9 thao tác - Delete (Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule, IAM role), Successfully deleted stack ai-aws-advisor-backend, dọn dẹp S3 bucket, tiết kiệm ước tính $42.30/tháng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.6-Operations-cleanup/sam_delete.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam delete: CloudFormation stack deletion với 9 thao tác - Delete (Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule, IAM role), Successfully deleted stack ai-aws-advisor-backend, dọn dẹp S3 bucket, tiết kiệm ước tính $42.30/tháng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 Xác nhận việc xóa khi được hỏi tên stack (`ai-aws-advisor`).
 

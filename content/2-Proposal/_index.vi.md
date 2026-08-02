@@ -34,7 +34,7 @@ Các tổ chức vận hành hệ thống trên AWS hiện nay đang đối mặ
 
 **Hình 1 - Luồng Cross-Account Role Assumption qua AWS STS:**
 
-<img src="/aws-ojt-workshop-ja/images/2-Proposal/cross_account_role_assumption.png?v=2026-07-31" alt="Sequence Diagram mô tả luồng STS AssumeRole - SaaS Lambda gọi AssumeRole, AWS STS validate Trust Policy, trả về temporary credentials để truy cập EC2, S3 trong tài khoản khách hàng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/2-Proposal/cross_account_role_assumption.png?v=2026-07-31" alt="Sequence Diagram mô tả luồng STS AssumeRole - SaaS Lambda gọi AssumeRole, AWS STS validate Trust Policy, trả về temporary credentials để truy cập EC2, S3 trong tài khoản khách hàng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 *Sơ đồ trên minh họa cơ chế **Ủy quyền Zero-Trust Cross-Account** qua 6 bước: (1) Lambda trong Provider Account gọi `sts:AssumeRole` với ARN của Cross-Account IAM Role (kèm `ExternalId` tùy chọn); (2) AWS STS validate Trust Policy — kiểm tra calling principal khớp, `ExternalId` khớp (nếu có), và permission boundary (nếu có) thỏa mãn; (3) Trust Policy hợp lệ được xác nhận; (4) STS phát hành **session token** (`AccessKeyId`, `SecretAccessKey`, `SessionToken`) có thời hạn 1 giờ qua `DurationSeconds=3600`; (5) Lambda dùng credentials tạm thời này tạo `boto3.Session` mới và gọi các API read-only lên **EC2** / **S3** / **IAM** / **Lambda** / **CloudWatch** trong tài khoản khách hàng mà không cần lưu trữ Access Key cố định - đảm bảo nguyên tắc **Least Privilege** và giảm thiểu rủi ro rò rỉ credential; (6) sau 1 giờ session tự hết hạn và lần scan hourly tiếp theo sẽ cấp session mới. Toàn bộ 23 read-only action được liệt kê chi tiết tại mục 5.3.10.*
 
@@ -49,7 +49,7 @@ Các tổ chức vận hành hệ thống trên AWS hiện nay đang đối mặ
 
 **Hình 2 - Sơ đồ Kiến trúc Tổng quan Hệ thống AI AWS Advisor:**
 
-<img src="/aws-ojt-workshop-ja/images/2-Proposal/aws_advisor_architecture.png?v=2026-08-01-r3" alt="Sơ đồ kiến trúc tổng quan AI AWS Advisor - Ba vùng độc lập: (1) Client Frontend với React 19 + Vite + Tailwind Dashboard (Recharts, TanStack Query) được phục vụ qua CloudFront + Route 53; (2) AI Advisor Backend gồm API Gateway (REST + Cognito JWT + Rate Limiting), SÁU Lambda Handler chia thành NĂM API Handler chuyên biệt (ai-advisor-projects-api 5 routes, ai-advisor-resources-api 2 routes, ai-advisor-insights-api 2 routes + Bedrock + SNS, ai-advisor-chat-api 1 route + Bedrock streaming, ai-advisor-alerts-api 1 route) và MỘT Collector Lambda (ai-advisor-collector trigger bởi EventBridge rate(1 hour), dùng sts:AssumeRole + 23 AWS read-actions), DynamoDB Multi-Table (4 bảng chuyên biệt ai-advisor-projects/resources/insights/alerts + 1 GSI resource_type-index, tất cả dùng chung project_id làm Partition Key cho tenant isolation), Amazon Bedrock Claude 3 Haiku (anthropic.claude-3-haiku-20240307-v1:0), Amazon SNS Topic ai-advisor-alerts với email subscription cho critical-risk alerts; (3) Customer Target AWS Accounts với Cross-Account IAM Role AIAdvisorAuditRole + trust policy + sts:AssumeRole truy cập EC2, S3, IAM, Lambda, CloudWatch." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/2-Proposal/aws_advisor_architecture.png?v=2026-08-01-r3" alt="Sơ đồ kiến trúc tổng quan AI AWS Advisor - Ba vùng độc lập: (1) Client Frontend với React 19 + Vite + Tailwind Dashboard (Recharts, TanStack Query) được phục vụ qua CloudFront + Route 53; (2) AI Advisor Backend gồm API Gateway (REST + Cognito JWT + Rate Limiting), SÁU Lambda Handler chia thành NĂM API Handler chuyên biệt (ai-advisor-projects-api 5 routes, ai-advisor-resources-api 2 routes, ai-advisor-insights-api 2 routes + Bedrock + SNS, ai-advisor-chat-api 1 route + Bedrock streaming, ai-advisor-alerts-api 1 route) và MỘT Collector Lambda (ai-advisor-collector trigger bởi EventBridge rate(1 hour), dùng sts:AssumeRole + 23 AWS read-actions), DynamoDB Multi-Table (4 bảng chuyên biệt ai-advisor-projects/resources/insights/alerts + 1 GSI resource_type-index, tất cả dùng chung project_id làm Partition Key cho tenant isolation), Amazon Bedrock Claude 3 Haiku (anthropic.claude-3-haiku-20240307-v1:0), Amazon SNS Topic ai-advisor-alerts với email subscription cho critical-risk alerts; (3) Customer Target AWS Accounts với Cross-Account IAM Role AIAdvisorAuditRole + trust policy + sts:AssumeRole truy cập EC2, S3, IAM, Lambda, CloudWatch." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 *Sơ đồ trên minh họa kiến trúc tổng quan của hệ thống ở **cấp độ hạ tầng AWS**, chia thành hai vùng chính:*
 
@@ -58,7 +58,7 @@ Các tổ chức vận hành hệ thống trên AWS hiện nay đang đối mặ
 
 **Hình 3 - Luồng tương tác chi tiết của quá trình AI Analysis:**
 
-<img src="/aws-ojt-workshop-ja/images/2-Proposal/ai_analysis.png?v=2026-07-31" alt="Luồng tương tác chi tiết giữa Frontend, API Gateway, Lambda, Bedrock, DynamoDB và SNS trong quá trình AI Analysis" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/2-Proposal/ai_analysis.png?v=2026-07-31" alt="Luồng tương tác chi tiết giữa Frontend, API Gateway, Lambda, Bedrock, DynamoDB và SNS trong quá trình AI Analysis" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 *Hình trên minh họa chuỗi tương tác tuần tự (sequence) giữa các thành phần trong hệ thống: Frontend gửi yêu cầu phân tích qua API Gateway, Lambda triệu gọi Amazon Bedrock (Claude 3 Haiku) với context từ DynamoDB, nhận về các khuyến nghị, lưu kết quả và gửi cảnh báo qua SNS nếu vượt ngưỡng nghiêm trọng.*
 
@@ -87,7 +87,7 @@ Các tổ chức vận hành hệ thống trên AWS hiện nay đang đối mặ
 
 **Hình 3 - Lộ trình Triển khai 3 Tháng với các Cột mốc Quan trọng:**
 
-<img src="/aws-ojt-workshop-ja/images/2-Proposal/implementation_roadmap_vi.png?v=2026-08-01" alt="Lộ trình triển khai 3 tháng của dự án AI AWS Advisor - 3 box giai đoạn M1, M2, M3 nối với nhau bằng mũi tên xuống dưới thể hiện tiến trình Kiến trúc & SAM IaC → Collector Lambda & Bedrock → React Dashboard & AI Chatbot" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/2-Proposal/implementation_roadmap_vi.png?v=2026-08-01" alt="Lộ trình triển khai 3 tháng của dự án AI AWS Advisor - 3 box giai đoạn M1, M2, M3 nối với nhau bằng mũi tên xuống dưới thể hiện tiến trình Kiến trúc & SAM IaC → Collector Lambda & Bedrock → React Dashboard & AI Chatbot" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 *Sơ đồ trên minh họa kế hoạch thực thi dự án chia thành 3 tháng với các cột mốc tương ứng. **Tháng 1** tập trung Bảo mật & Kiến trúc (Cross-Account Trust Policy, SAM IaC, DynamoDB Multi-Table schema). **Tháng 2** hoàn thiện Core Scanner & Bedrock Integration (`boto3` Collectors, prompt engineering, Pytest unit tests). **Tháng 3** ra mắt Frontend Dashboard & AI Chatbot (React 19 + Vite + Tailwind, kiểm thử E2E, SAM CloudFormation deployment).*
 

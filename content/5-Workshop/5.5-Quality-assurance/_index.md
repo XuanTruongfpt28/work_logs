@@ -28,7 +28,7 @@ python -m pytest tests/ -v
 
 **Figure 1 - Backend test suite — `pytest tests/ -v` shows 26 tests passed across 7 test files (API handlers + AI analyzer + shared DB layer), executed in 4.32s with 93% code coverage:**
 
-<img src="/aws-ojt-workshop-ja/images/5.5-Quality-assurance/pytest_output.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing pytest -v execution: 26 tests collected and passed across 7 test files (api/test_projects.py, api/test_resources.py, api/test_insights.py, api/test_alerts.py, api/test_chat.py, ai/test_analyzer.py, shared/test_db.py). Footer summary shows 26 passed in 4.32s and a coverage table with 93% total. No failures, no skips." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.5-Quality-assurance/pytest_output.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing pytest -v execution: 26 tests collected and passed across 7 test files (api/test_projects.py, api/test_resources.py, api/test_insights.py, api/test_alerts.py, api/test_chat.py, ai/test_analyzer.py, shared/test_db.py). Footer summary shows 26 passed in 4.32s and a coverage table with 93% total. No failures, no skips." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 
@@ -48,7 +48,7 @@ npm run test
 
 **Figure 2 - Frontend test suite — `npm run test` (vitest run) shows 7 component/hook tests passed across 5 test files (Dashboard in 2 locations, Copilot, ProjectContext, api), executed in under 3s with Vite watch mode:**
 
-<img src="/aws-ojt-workshop-ja/images/5.5-Quality-assurance/npm_test_output.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing npm run test (vitest run) execution: 7 tests passed across 5 test files (src/pages/__tests__/Dashboard.test.jsx with 3 tests, src/tests/pages/Dashboard.test.jsx with 1 test, src/tests/pages/Copilot.test.jsx with 1 test, src/tests/context/ProjectContext.test.jsx with 1 test, src/services/__tests__/api.test.js with 1 test). Footer summary shows 5 Test Files passed (5), 7 Tests passed (7), Duration ~2.5s. No failures." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.5-Quality-assurance/npm_test_output.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing npm run test (vitest run) execution: 7 tests passed across 5 test files (src/pages/__tests__/Dashboard.test.jsx with 3 tests, src/tests/pages/Dashboard.test.jsx with 1 test, src/tests/pages/Copilot.test.jsx with 1 test, src/tests/context/ProjectContext.test.jsx with 1 test, src/services/__tests__/api.test.js with 1 test). Footer summary shows 5 Test Files passed (5), 7 Tests passed (7), Duration ~2.5s. No failures." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 

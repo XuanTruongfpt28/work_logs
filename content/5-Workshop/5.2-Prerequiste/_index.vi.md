@@ -24,11 +24,11 @@ pre: " <b> 5.2. </b> "
 
 **Hình - Cấu hình `aws configure` và xác minh bằng `aws sts get-caller-identity`:**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/aws_cli_configure.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị các prompt của aws configure cho AWS Access Key ID, AWS Secret Access Key, Default region name (us-east-1), Default output format (json), tiếp theo là lệnh aws sts get-caller-identity trả về JSON với UserId, Account, và Arn xác nhận IAM credentials hợp lệ" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/aws_cli_configure.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị các prompt của aws configure cho AWS Access Key ID, AWS Secret Access Key, Default region name (us-east-1), Default output format (json), tiếp theo là lệnh aws sts get-caller-identity trả về JSON với UserId, Account, và Arn xác nhận IAM credentials hợp lệ" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 **Hình 1 - Trang Amazon Bedrock Model Access — toàn bộ model Anthropic Claude 3 family đã được cấp quyền (trạng thái Access granted tại region `us-east-1`):**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/bedrock_model_access.jpg?v=2026-08-01-r3" alt="Trang Amazon Bedrock Model Access hiển thị toàn bộ model Anthropic Claude 3 family (3.5 Sonnet v2, 3.5 Sonnet, 3 Opus, 3 Sonnet, 3 Haiku) đều có trạng thái Access granted màu xanh tại region us-east-1" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/bedrock_model_access.jpg?v=2026-08-01-r3" alt="Trang Amazon Bedrock Model Access hiển thị toàn bộ model Anthropic Claude 3 family (3.5 Sonnet v2, 3.5 Sonnet, 3 Opus, 3 Sonnet, 3 Haiku) đều có trạng thái Access granted màu xanh tại region us-east-1" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 > **Ghi chú kiểm chứng:** Ảnh chụp được lấy từ tài khoản AWS của tác giả workshop tại thời điểm xuất bản. Nếu console của bạn hiển thị *"Not available"* hoặc *"Access denied"* cho bất kỳ model Anthropic nào, hãy mở **Bedrock Chat/Text Playground** một lần và gửi **form Use Case** (Tên công ty, Website, Ngành, Đối tượng, Mô tả use case). Anthropic thường duyệt trong vòng 24 giờ. Hoặc đơn giản hơn, đổi Model ID trong `template.yaml` sang `amazon.nova-lite-v1:0` — không cần bước duyệt thủ công.
 
@@ -40,7 +40,7 @@ Trước khi triển khai, hãy chạy các lệnh dưới đây trong PowerShel
 
 **Hình 2 - Kiểm tra phiên bản toolchain: `aws / sam / python / node / docker`:**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/toolchain_check.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị kết quả kiểm tra phiên bản AWS CLI (2.17.10), SAM CLI (1.124.0), Python (3.12.6), Node.js (20.15.0), Docker (27.0.3) và lệnh aws sts get-caller-identity trả về thông tin IAM user của tác giả workshop" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/toolchain_check.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị kết quả kiểm tra phiên bản AWS CLI (2.17.10), SAM CLI (1.124.0), Python (3.12.6), Node.js (20.15.0), Docker (27.0.3) và lệnh aws sts get-caller-identity trả về thông tin IAM user của tác giả workshop" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ```bash
 # Kiểm tra phiên bản các công cụ

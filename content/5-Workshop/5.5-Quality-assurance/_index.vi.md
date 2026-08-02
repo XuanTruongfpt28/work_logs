@@ -28,7 +28,7 @@ python -m pytest tests/ -v
 
 **Hình 1 - Bộ test Backend — `pytest tests/ -v` hiển thị 26 tests passed qua 7 file test (API handlers + AI analyzer + shared DB layer), thực thi trong 4.32s với 93% code coverage:**
 
-<img src="/aws-ojt-workshop-ja/images/5.5-Quality-assurance/pytest_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh pytest -v: 26 tests được thu thập và passed qua 7 file test (api/test_projects.py, api/test_resources.py, api/test_insights.py, api/test_alerts.py, api/test_chat.py, ai/test_analyzer.py, shared/test_db.py). Footer summary cho thấy 26 passed in 4.32s và bảng coverage với tổng 93%. Không có test fail, không có test skip." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.5-Quality-assurance/pytest_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh pytest -v: 26 tests được thu thập và passed qua 7 file test (api/test_projects.py, api/test_resources.py, api/test_insights.py, api/test_alerts.py, api/test_chat.py, ai/test_analyzer.py, shared/test_db.py). Footer summary cho thấy 26 passed in 4.32s và bảng coverage với tổng 93%. Không có test fail, không có test skip." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 
@@ -48,7 +48,7 @@ npm run test
 
 **Hình 2 - Bộ test Frontend — `npm run test` (vitest run) hiển thị 7 component/hook tests passed qua 5 file test (Dashboard ở 2 vị trí, Copilot, ProjectContext, api), thực thi dưới 3s với Vite watch mode:**
 
-<img src="/aws-ojt-workshop-ja/images/5.5-Quality-assurance/npm_test_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh npm run test (vitest run): 7 tests passed qua 5 file test (src/pages/__tests__/Dashboard.test.jsx với 3 tests, src/tests/pages/Dashboard.test.jsx với 1 test, src/tests/pages/Copilot.test.jsx với 1 test, src/tests/context/ProjectContext.test.jsx với 1 test, src/services/__tests__/api.test.js với 1 test). Footer summary cho thấy 5 Test Files passed (5), 7 Tests passed (7), Duration ~2.5s. Không có test fail." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.5-Quality-assurance/npm_test_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh npm run test (vitest run): 7 tests passed qua 5 file test (src/pages/__tests__/Dashboard.test.jsx với 3 tests, src/tests/pages/Dashboard.test.jsx với 1 test, src/tests/pages/Copilot.test.jsx với 1 test, src/tests/context/ProjectContext.test.jsx với 1 test, src/services/__tests__/api.test.js với 1 test). Footer summary cho thấy 5 Test Files passed (5), 7 Tests passed (7), Duration ~2.5s. Không có test fail." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ---
 

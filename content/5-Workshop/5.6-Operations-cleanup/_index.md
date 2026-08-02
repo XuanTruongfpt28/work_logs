@@ -25,7 +25,7 @@ sam delete
 
 **Figure 1 - SAM CLI `sam delete --no-prompts` output (Successfully deleted stack):**
 
-<img src="/aws-ojt-workshop-ja/images/5.6-Operations-cleanup/sam_delete.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing sam delete execution: CloudFormation stack deletion with 9 - Delete operations (Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule, IAM role), Successfully deleted stack ai-aws-advisor-backend, S3 bucket cleanup, estimated monthly savings $42.30" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.6-Operations-cleanup/sam_delete.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing sam delete execution: CloudFormation stack deletion with 9 - Delete operations (Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule, IAM role), Successfully deleted stack ai-aws-advisor-backend, S3 bucket cleanup, estimated monthly savings $42.30" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 During the confirmation prompt, confirm deletion of the target stack (`ai-aws-advisor`).
 

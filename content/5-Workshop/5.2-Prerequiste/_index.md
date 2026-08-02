@@ -24,11 +24,11 @@ To deploy, operate, and contribute to **AI AWS Advisor**, ensure your local deve
 
 **Figure - `aws configure` interactive prompts and `aws sts get-caller-identity` verification output:**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/aws_cli_configure.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing aws configure prompts for AWS Access Key ID, AWS Secret Access Key, Default region name (us-east-1), Default output format (json), followed by aws sts get-caller-identity returning a JSON payload with UserId, Account, and Arn fields confirming the IAM credentials are valid" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/aws_cli_configure.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing aws configure prompts for AWS Access Key ID, AWS Secret Access Key, Default region name (us-east-1), Default output format (json), followed by aws sts get-caller-identity returning a JSON payload with UserId, Account, and Arn fields confirming the IAM credentials are valid" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 **Figure 1 - Amazon Bedrock Model Access page — all Anthropic Claude 3 family models granted (Access granted status verified in `us-east-1`):**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/bedrock_model_access.jpg?v=2026-08-01-r3" alt="Amazon Bedrock Model Access page showing all Anthropic Claude 3 family models (3.5 Sonnet v2, 3.5 Sonnet, 3 Opus, 3 Sonnet, 3 Haiku) with green Access granted status in us-east-1 region" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/bedrock_model_access.jpg?v=2026-08-01-r3" alt="Amazon Bedrock Model Access page showing all Anthropic Claude 3 family models (3.5 Sonnet v2, 3.5 Sonnet, 3 Opus, 3 Sonnet, 3 Haiku) with green Access granted status in us-east-1 region" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 > **Verification note:** This screenshot was captured from the workshop author's AWS account on the date this workshop was published. If your console shows *"Not available"* or *"Access denied"* for any Anthropic model, open the Bedrock Chat/Text Playground once and submit the one-time **Use Case form** (Company name, Website, Industry, Audience, Use case description). Anthropic typically approves the request within 24 hours. Alternatively, you can swap the model ID in `template.yaml` to `amazon.nova-lite-v1:0`, which does not require Anthropic's manual approval step.
 
@@ -40,7 +40,7 @@ Before starting deployment, run the commands below in PowerShell / Terminal and 
 
 **Figure 2 - Toolchain verification: `aws / sam / python / node / docker` versions:**
 
-<img src="/aws-ojt-workshop-ja/images/5.2-Prerequiste/toolchain_check.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing version checks for AWS CLI (2.17.10), SAM CLI (1.124.0), Python (3.12.6), Node.js (20.15.0), Docker (27.0.3), and aws sts get-caller-identity returning the workshop author's IAM user ARN" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+<img src="/images/5.2-Prerequiste/toolchain_check.png?v=2026-08-01-r1" alt="PowerShell 7 terminal showing version checks for AWS CLI (2.17.10), SAM CLI (1.124.0), Python (3.12.6), Node.js (20.15.0), Docker (27.0.3), and aws sts get-caller-identity returning the workshop author's IAM user ARN" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
 ```bash
 # Check toolchain versions
