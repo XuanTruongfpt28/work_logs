@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Duration:** From 11/05/2026 to 31/07/2026
 
-![Your profile picture](/images/avatar.png)
+![Your profile picture](src="https://xuantruongfpt28.github.io/work_logs/images/avatar.png")
 
 ### Report Content
 
