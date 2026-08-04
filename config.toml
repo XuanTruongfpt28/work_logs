@@ -1,5 +1,5 @@
 baseURL = "https://xuantruongfpt28.github.io/work_logs/"
-relativeURLs = false
+relativeURLs = true
 canonifyURLs = false
 defaultContentLanguage = "en"
 
