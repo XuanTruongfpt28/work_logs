@@ -1,6 +1,6 @@
 ﻿---
 title: "Kiến trúc & Thiết kế"
-date: 2026-05-01
+date: 2026-07-07
 weight: 3
 chapter: false
 pre: " <b> 5.3. </b> "
@@ -16,27 +16,32 @@ Dự án **AI AWS Advisor** được phát triển trên 3 trụ cột kỹ thu�
 
 Hệ thống phân chia ranh giới bảo mật thành 3 vùng độc lập, được minh họa trong sơ đồ kiến trúc bên dưới:
 
-**Hình 1 - Kiến trúc Tổng quan (3 ranh giới bảo mật: Client Frontend / SaaS Provider Backend / Customer Target Account):**
+**Kiến trúc Tổng quan (3 ranh giới bảo mật: Client Frontend / SaaS Provider Backend / Customer Target Account):**
 
-<img src="/images/5.3-Architecture-design/high_level_architecture.png?v=2026-08-01-r2" alt="Sơ đồ kiến trúc tổng quan hiển thị ba ranh giới bảo mật độc lập: (1) Vùng Client Frontend màu xanh dương với React 19 Dashboard SPA, TanStack React Query, Recharts Visualization, CloudFront + S3 hosting, Amazon Cognito JWT, và Browser User Flow; (2) Vùng SaaS Provider Backend màu tím với API Gateway (REST, 11 routes, Cognito JWT Authorizer, quota 1000/tháng, burst 50, rate 100/s), SÁU Lambda Functions: NĂM API Handler chuyên biệt (projects-api, resources-api, insights-api, chat-api, alerts-api) và MỘT Collector Lambda (ai-advisor-collector, quét mỗi giờ rate(1 hour), STS AssumeRole, 23 AWS read actions trên EC2/S3/IAM/Lambda/CloudWatch), Amazon EventBridge rate(1 hour) kích hoạt Collector, Amazon Bedrock Claude 3 Haiku (anthropic.claude-3-haiku-20240307-v1:0) cho phân tích AI, DynamoDB Multi-Table (4 bảng chuyên biệt: ai-advisor-projects PK=project_id+SK=sk, ai-advisor-resources PK=project_id+SK=resource_id + GSI resource_type-index, ai-advisor-insights PK=project_id+SK=insight_id, ai-advisor-alerts PK=project_id+SK=alert_id), Amazon SNS Topic ai-advisor-alerts với email subscription cho critical-risk alerts; (3) Vùng Customer Target AWS Account màu hổ phách với Read-Only IAM Role AIAdvisorAuditRole + trust policy, AWS STS xác thực trust policy và trả về temp credentials, và customer AWS resources (EC2, S3, IAM, Lambda, CloudWatch). Mũi tên liền thể hiện luồng nội tài khoản (HTTPS REST với JWT, mỗi-1-giờ trigger, Bedrock prompt, critical-risk SNS publish, boto3 read API); mũi tên đứt nét màu đỏ thể hiện cross-account sts:AssumeRole delegation từ Collector Lambda sang Customer IAM Role, và đường temp-credentials trở về." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+
+
+> **Mô tả sơ đồ :** Sơ đồ chia làm ba vùng.
+> - **Vùng 1 — Client Frontend:** React 19 Dashboard SPA, TanStack React Query, Recharts, host trên CloudFront + S3, xác thực qua Amazon Cognito (JWT).
+> - **Vùng 2 — SaaS Provider Backend:** API Gateway (REST, 11 route, Cognito JWT Authorizer, quota 1000/tháng, burst 50, rate 100/s); sáu Lambda function (năm API handler: projects-api, resources-api, insights-api, chat-api, alerts-api, cộng một Collector Lambda `ai-advisor-collector`); Amazon EventBridge `rate(1 hour)` kích hoạt Collector; Amazon Bedrock Claude 3 Haiku phân tích AI; DynamoDB Multi-Table (4 bảng); Amazon SNS Topic `ai-advisor-alerts` gửi email cho cảnh báo nghiêm trọng.
+> - **Vùng 3 — Customer Target AWS Account:** Read-Only IAM Role `AIAdvisorAuditRole` + trust policy, AWS STS xác thực và trả temp credentials, cùng các resource khách hàng (EC2, S3, IAM, Lambda, CloudWatch).
+> - **Ký hiệu mũi tên:** mũi tên liền nét = luồng nội tài khoản (HTTPS/JWT, trigger mỗi giờ, Bedrock prompt, SNS publish, boto3 read); mũi tên đứt nét = cross-account `sts:AssumeRole` delegation từ Collector sang IAM Role khách hàng, kèm đường temp-credentials trả về.
 
 **Sơ đồ này thể hiện:**
 
-Sơ đồ được chia thành ba vùng màu tương ứng với ba AWS account / ranh giới bảo mật:
+Sơ đồ được chia thành ba vùng tương ứng với ba AWS account / ranh giới bảo mật:
 
-| # | Ranh giới | Màu | Chủ sở hữu | Mục đích |
-|---|-----------|-----|------------|----------|
-| 1 | **Client Frontend** (React 19 + Vite) | Xanh dương | Trình duyệt | Render dashboard, fetch data qua TanStack React Query, biểu đồ với Recharts, host trên CloudFront + S3, xác thực qua Amazon Cognito (JWT). |
-| 2 | **SaaS Provider Backend** (Serverless Stack) | Tím | Tài khoản workshop này | Host API Gateway (11 REST routes), năm API Lambda function, một Collector Lambda theo lịch, Amazon EventBridge schedule, Amazon Bedrock (Claude 3 Haiku), bốn bảng DynamoDB + 1 GSI, và một Amazon SNS topic cho cảnh báo nghiêm trọng. |
-| 3 | **Customer Target AWS Account** | Hổ phách | Mỗi tenant | Cấp một Read-Only IAM Role tin tưởng tài khoản SaaS Provider, và cho phép các resource EC2 / S3 / IAM / Lambda / CloudWatch được kiểm toán. |
+| # | Vùng | Ranh giới | Chủ sở hữu | Mục đích |
+|---|------|-----------|------------|----------|
+| 1 | **Vùng 1** | **Client Frontend** (React 19 + Vite) | Trình duyệt | Render dashboard, fetch data qua TanStack React Query, biểu đồ với Recharts, host trên CloudFront + S3, xác thực qua Amazon Cognito (JWT). |
+| 2 | **Vùng 2** | **SaaS Provider Backend** (Serverless Stack) | Tài khoản workshop này | Host API Gateway (11 REST routes), năm API Lambda function, một Collector Lambda theo lịch, Amazon EventBridge schedule, Amazon Bedrock (Claude 3 Haiku), bốn bảng DynamoDB + 1 GSI, và một Amazon SNS topic cho cảnh báo nghiêm trọng. |
+| 3 | **Vùng 3** | **Customer Target AWS Account** | Mỗi tenant | Cấp một Read-Only IAM Role tin tưởng tài khoản SaaS Provider, và cho phép các resource EC2 / S3 / IAM / Lambda / CloudWatch được kiểm toán. |
 
 **Ba quyết định thiết kế đáng chú ý:**
 
 - **100 % Serverless phía Provider.** API Gateway + Lambda + DynamoDB + EventBridge + SNS nghĩa là không có EC2 instance nào phải vận hành; chi phí nhàn rỗi đúng bằng $0 vì cả bốn bảng DynamoDB dùng `PAY_PER_REQUEST`.
-- **Không có customer credential cố định.** Mũi tên đứt nét đỏ xuyên qua ranh giới Provider ↔ Customer thể hiện `sts:AssumeRole` delegation — credentials tạm thời, scope trong một phiên kiểm toán, không bao giờ lưu xuống đĩa.
+- **Không có customer credential cố định.** Mũi tên đứt nét xuyên qua ranh giới Vùng 2 ↔ Vùng 3 (Provider ↔ Customer) thể hiện `sts:AssumeRole` delegation — credentials tạm thời, scope trong một phiên kiểm toán, không bao giờ lưu xuống đĩa.
 - **Tần suất mỗi giờ với AI xử lý phía trên.** EventBridge kích hoạt Collector Lambda mỗi giờ; raw inventory được lưu vào DynamoDB, sau đó một Prompt duy nhất được gửi tới Bedrock (Claude 3 Haiku) để phân tích Security / Cost / Performance. Rủi ro nghiêm trọng được chuyển sang SNS gửi email cảnh báo.
 
-> **Hướng dẫn đọc sơ đồ:** Trong Hình 1, theo mũi tên liền màu xanh (User → API Gateway) để thấy một dashboard request di chuyển như thế nào; sau đó theo mũi tên đứt nét đỏ (Collector → STS → Temp Credentials → boto3 read API) để thấy một lần quét mỗi giờ xuyên qua tài khoản khách hàng ra sao.
 
 ### Quyết định thiết kế: 100% Serverless
 
@@ -48,9 +53,9 @@ Vận hành trên AWS Lambda, API Gateway, và DynamoDB loại bỏ chi phí h�
 
 Thay vì yêu cầu khách hàng cung cấp Access Key / Secret Key cố định (nguy cơ rò rỉ rất cao), hệ thống yêu cầu khách hàng cấp một Read-Only IAM Role tin tưởng tài khoản SaaS của chúng ta.
 
-**Hình 2 - Luồng sequence Zero-Trust STS AssumeRole (Provider Lambda ↔ IAM Role Khách hàng qua STS):**
+**Hình  - Luồng sequence Zero-Trust STS AssumeRole (Provider Lambda ↔ IAM Role Khách hàng qua STS):**
 
-<img src="/images/5.3-Architecture-design/zero_trust_security_cross_account.png?v=2026-08-01-r2" alt="Sơ đồ sequence Zero-Trust STS AssumeRole — Collector Lambda của SaaS Provider gọi sts:AssumeRole, AWS STS xác thực trust policy của IAM Role khách hàng, trả về temporary credentials, sau đó Collector dùng credentials tạm thời để kiểm toán tài nguyên EC2 và S3 trong tài khoản AWS khách hàng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![Zero-Trust Cross-Account STS AssumeRole flow](/images/5-Workshop/5.3-Architecture-design/zero_trust_security_cross_account.png)
 
 **Cách Zero-Trust Cross-Account Delegation hoạt động trong hệ thống này:**
 
@@ -76,9 +81,9 @@ Thay vì yêu cầu khách hàng cung cấp Access Key / Secret Key cố định
 
 ## 3. Luồng Quét Tự động & Phân tích Trí tuệ Nhân tạo
 
-**Hình 3 - Luồng sequence Quét Tự động & Phân tích AI (EventBridge → Collector → STS → DynamoDB → Bedrock → SNS):**
+**Hình  - Luồng sequence Quét Tự động & Phân tích AI (EventBridge → Collector → STS → DynamoDB → Bedrock → SNS):**
 
-<img src="/images/5.3-Architecture-design/automated_scanning_ai_analysis_flow.png?v=2026-08-01-r1" alt="Sơ đồ sequence Quét Tự động và Phân tích AI — EventBridge kích hoạt Collector Lambda mỗi giờ, Collector lấy danh sách dự án active từ DynamoDB, AssumeRole IAM Role khách hàng qua STS, kiểm toán tài khoản AWS mục tiêu, lưu tài nguyên thô vào DynamoDB, sau đó gửi Prompt đến Amazon Bedrock (Claude 3 Haiku) để phân tích AI. Rủi ro nghiêm trọng sẽ publish SNS để gửi email cảnh báo" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![Automated scanning and AI analysis flow](/images/5-Workshop/5.3-Architecture-design/automated_scanning_ai_analysis_flow.png)
 
 **Cách end-to-end hourly scan hoạt động:**
 
@@ -110,9 +115,15 @@ Toàn bộ pipeline scan + AI analysis chạy theo tần suất cố định m�
 
 Ứng dụng lưu trữ dữ liệu trên **bốn DynamoDB table chuyên biệt** (một table cho mỗi entity). Mặc dù mọi table đều dùng chung `project_id` làm Partition Key để đảm bảo cách ly tenant tuyệt đối, thiết kế này cố ý *không phải* single-table — bốn entity có access pattern, secondary index và attribute schema khác nhau, vì vậy multi-table giữ cho mỗi table nhỏ và nhanh. Single-table layout được tài liệu hóa trong mục 5.3.6 như một điểm so sánh, nhưng *không phải* là thứ mà production template triển khai.
 
-**Hình 4 - Sơ đồ Entity-Relationship DynamoDB Multi-Table (4 table, đều dùng chung `project_id` làm Partition Key cho cách ly tenant):**
+**Sơ đồ Entity-Relationship DynamoDB Multi-Table (4 table, đều dùng chung `project_id` làm Partition Key cho cách ly tenant):**
 
-<img src="/images/5.3-Architecture-design/dynamodb_singletable_design.png?v=2026-08-01-r2" alt="Sơ đồ Entity-Relationship DynamoDB Multi-Table — Bốn table chuyên biệt (PROJECTS, RESOURCES, INSIGHTS, ALERTS) đều dùng chung project_id làm Partition Key cho cách ly tenant. Table PROJECTS (PK: project_id, SK: sk) là root entity chứa metadata customer-project; table RESOURCES (PK: project_id, SK: resource_id) lưu snapshot AWS resources thô (EC2, S3, IAM, Lambda, CloudWatch) do Collector Lambda thu thập; table INSIGHTS (PK: project_id, SK: insight_id) lưu các khuyến nghị AI được Bedrock Claude 3 Haiku sinh ra; table ALERTS (PK: project_id, SK: alert_id) lưu các cảnh báo rủi ro nghiêm trọng được publish lên SNS Topic. RESOURCES có thêm GSI resource_type-index (HASH: resource_type, RANGE: collected_at) cho truy vấn cross-project theo resource type. ĐIỂM QUAN TRỌNG: Hệ thống dùng Multi-Table design (4 bảng chuyên biệt) KHÔNG phải single-table; tenant isolation được đảm bảo qua project_id làm partition key chung." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+
+> **Mô tả sơ đồ (để đọc được ngay cả khi ảnh chưa tải):** Bốn table chuyên biệt — **PROJECTS**, **RESOURCES**, **INSIGHTS**, **ALERTS** — đều dùng chung `project_id` làm Partition Key cho cách ly tenant.
+> - **PROJECTS** (PK: `project_id`, SK: `sk`) — root entity, chứa metadata customer-project.
+> - **RESOURCES** (PK: `project_id`, SK: `resource_id`) — snapshot AWS resource thô (EC2, S3, IAM, Lambda, CloudWatch) do Collector Lambda thu thập; có thêm **GSI `resource_type-index`** (HASH: `resource_type`, RANGE: `collected_at`) cho truy vấn cross-project theo resource type.
+> - **INSIGHTS** (PK: `project_id`, SK: `insight_id`) — khuyến nghị AI do Bedrock Claude 3 Haiku sinh ra.
+> - **ALERTS** (PK: `project_id`, SK: `alert_id`) — cảnh báo rủi ro nghiêm trọng đã publish lên SNS Topic.
+> - **Điểm quan trọng:** đây là thiết kế **Multi-Table** (4 bảng chuyên biệt), **không phải** single-table; tenant isolation được đảm bảo qua `project_id` làm partition key chung trên cả 4 bảng.
 
 **Quan hệ entity diễn giải bằng văn bản:**
 
@@ -153,16 +164,19 @@ Thiết kế này đảm bảo cách ly tenant tuyệt đối (`project_id` Part
 
 ## 5. Tổng quan Kiến trúc End-to-End (PNG Tham chiếu)
 
-Sơ đồ PNG bên dưới hợp nhất toàn bộ AWS service trong hệ thống, được tổ chức thành 3 ranh giới bảo mật (Client, Provider Backend, Customer Target Account) cùng các mũi tên có nhãn cho mọi luồng request chính:
+Bên dưới hợp nhất toàn bộ AWS service trong hệ thống, được tổ chức thành 3 ranh giới bảo mật (Client, Provider Backend, Customer Target Account) cùng các mũi tên có nhãn cho mọi luồng request chính:
 
-**Hình 5 - Sơ đồ Kiến trúc End-to-End (3 ranh giới bảo mật + 19 AWS services):**
+**Sơ đồ Kiến trúc End-to-End (3 ranh giới bảo mật + 19 AWS services):**
 
-<img src="/images/5.3-Architecture-design/detailed_architecture.png?v=2026-08-01-r4" alt="Sơ đồ kiến trúc end-to-end tham chiếu với FLOW SUMMARY (11 bước đánh số) và 3 ranh giới bảo mật: Client Frontend (React 19 Dashboard, S3+CloudFront stack, Cognito JWT, API Gateway); SaaS Provider Backend (SÁU Lambda functions: NĂM API Handler chuyên biệt — projects-api, resources-api, insights-api, chat-api, alerts-api — và MỘT Collector Lambda được trigger bởi EventBridge schedule rate(1 hour); Bedrock Claude 3 Haiku; SNS alerts; DynamoDB Multi-Table 4 bảng chuyên biệt + 1 GSI resource_type-index); và Customer Target AWS Accounts (IAM Role AIAdvisorAuditRole, STS AssumeRole, EC2, S3, IAM, Lambda, CloudWatch). 11 bước flow đánh số: (1) browser request dashboard qua HTTPS; (2) CloudFront+S3 phục vụ React bundle; (3) Cognito cấp JWT sau login; (4) API Gateway nhận REST call với JWT; (5) API Handler Lambda thực thi với DynamoDB read/write; (6) Collector Lambda được trigger (qua EventBridge HOẶC qua /sync API); (7) Collector query DynamoDB PROJECTS lấy customer đang active; (8) Collector gọi sts:AssumeRole lấy temp credentials trong target account; (9) Collector dùng boto3 đọc 23 AWS read-actions (EC2/S3/IAM/Lambda/CloudWatch); (10) Collector ghi raw data vào DynamoDB RESOURCES + gọi Bedrock Claude 3 Haiku phân tích + ghi insights + publish critical-risk alerts lên SNS. Mũi tên liền thể hiện luồng nội tài khoản; mũi tên đứt nét màu đỏ thể hiện cross-account sts:AssumeRole delegation từ Collector Lambda sang Customer IAM Role." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
-> **Hướng dẫn đọc sơ đồ:**
-> - **Hàng 1 (Client):** Trình duyệt → CloudFront → S3 SPA tĩnh → Cognito cấp JWT → API Gateway xác thực JWT trên mỗi request.
-> - **Hàng 2 (Backend):** API Gateway định tuyến đến một trong 5 API Lambdas (projects, resources, insights, chat, alerts). EventBridge schedule (1 giờ) kích hoạt Collector Lambda, ghi vào DynamoDB, gọi Bedrock phân tích AI, và publish SNS nếu phát hiện rủi ro nghiêm trọng.
-> - **Hàng 3 (Customer):** Collector Lambda gọi `sts:AssumeRole` đến IAM Role đáng tin cậy của khách hàng, sau đó dùng boto3 liệt kê cấu hình EC2 / S3 / IAM / v.v. trên nhiều region.
+> **Mô tả sơ đồ:** 
+> - **Vùng 1 — Client Frontend:** React 19 Dashboard, S3 + CloudFront, Cognito JWT, API Gateway.
+> - **Vùng 2 — SaaS Provider Backend:** sáu Lambda function (năm API handler — projects-api, resources-api, insights-api, chat-api, alerts-api — và một Collector Lambda trigger bởi EventBridge `rate(1 hour)`); Bedrock Claude 3 Haiku; SNS alerts; DynamoDB Multi-Table 4 bảng + 1 GSI `resource_type-index`.
+> - **Vùng 3 — Customer Target AWS Accounts:** IAM Role `AIAdvisorAuditRole`, STS AssumeRole, EC2, S3, IAM, Lambda, CloudWatch.
+> - **11 bước flow đánh số:** (1) browser request dashboard qua HTTPS → (2) CloudFront + S3 phục vụ React bundle → (3) Cognito cấp JWT sau login → (4) API Gateway nhận REST call với JWT → (5) API Handler Lambda thực thi với DynamoDB read/write → (6) Collector Lambda được trigger (qua EventBridge hoặc qua `/sync` API) → (7) Collector query DynamoDB PROJECTS lấy customer đang active → (8) Collector gọi `sts:AssumeRole` lấy temp credentials trong target account → (9) Collector dùng boto3 đọc 23 AWS read-action (EC2/S3/IAM/Lambda/CloudWatch) → (10) Collector ghi raw data vào DynamoDB RESOURCES, gọi Bedrock Claude 3 Haiku phân tích, ghi insights, và publish critical-risk alert lên SNS.
+> - **Ký hiệu mũi tên:** mũi tên liền nét = luồng nội tài khoản; mũi tên đứt nét = cross-account `sts:AssumeRole` delegation từ Collector sang IAM Role khách hàng.
+
+
 
 ---
 
@@ -184,7 +198,7 @@ GSI resource_type-index cho phép dashboard truy vấn, ví dụ: 'tất cả S3
 ## 7. EventBridge Schedule và SNS Alert Pipeline
 
 - **EventBridge rule** được khai báo inline trong template.yaml với Schedule: rate(1 hour) và Enabled: true. Để đổi tần suất, sửa rule và redeploy stack.
-- **SNS topic** i-advisor-alerts được tạo với subscription email. Cập nhật SAM parameter AlertEmail nếu muốn đổi người nhận.
+- **SNS topic** ai-advisor-alerts được tạo với subscription email. Cập nhật SAM parameter AlertEmail nếu muốn đổi người nhận.
 
 > **Chiến lược truy vấn cross-project với GSI `resource_type-index`:** GSI duy nhất trên `ai-advisor-resources` được thiết kế có chủ đích cho **truy vấn cross-project theo resource type**. Primary key của base table (`project_id`, `resource_id`) tối ưu cho *intra-project* query "tất cả resource của project X". Nhưng dashboard cũng cần trả lời *cross-project* query "hiện mọi S3 bucket của mọi project" (vd: cho một global misconfiguration sweep). Không có GSI, query đó phải `Scan` toàn bộ `ai-advisor-resources`. Có GSI, cùng query đó trở thành `Query` trên `resource_type-index` với `KeyConditionExpression = "resource_type = :t"`, O(matches) thay vì O(table). Đánh đổi là duplicated writes (mỗi resource ghi một lần vào base table + index dưới `resource_type + collected_at` trên GSI), nhưng với `PAY_PER_REQUEST` và lượng resource nhỏ mỗi project, chi phí bỏ qua được so với lợi ích query-latency.
 

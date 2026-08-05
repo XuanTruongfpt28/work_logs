@@ -1,6 +1,6 @@
-﻿---
+---
 title: "Vận hành & Dọn dẹp"
-date: 2026-05-01
+date: 2026-07-07
 weight: 6
 chapter: false
 pre: " <b> 5.6. </b> "
@@ -8,7 +8,7 @@ pre: " <b> 5.6. </b> "
 
 # Phần 5.6 - Vận hành, Dọn dẹp Tài nguyên & Đánh giá Kiến trúc
 
-Tài liệu này hướng dẫn quy trình tiêu hủy tài nguyên hệ thống an toàn, đồng thời tổng kết các bài học kiến trúc và định hướng phát triển cho **AI AWS Advisor**.
+Tài liệu này hướng dẫn quy trình tiêu hủy tài nguyên hệ thống an toàn, đồng thời tổng kết kiến trúc và định hướng phát triển cho **AI AWS Advisor**.
 
 ---
 
@@ -25,7 +25,8 @@ sam delete
 
 **Hình 1 - Kết quả SAM CLI `sam delete --no-prompts` (Successfully deleted stack):**
 
-<img src="/images/5.6-Operations-cleanup/sam_delete.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam delete: CloudFormation stack deletion với 9 thao tác - Delete (Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule, IAM role), Successfully deleted stack ai-aws-advisor-backend, dọn dẹp S3 bucket, tiết kiệm ước tính $42.30/tháng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![Sam_delete](/images/5-Workshop/5.6-Operations-cleanup/sam_delete.png)
+
 
 Xác nhận việc xóa khi được hỏi tên stack (`ai-aws-advisor`).
 
@@ -85,19 +86,17 @@ Hai chi phí lớn nhất:
 
 ## 6. Checklist An toàn Trước khi Xóa
 
-Trước khi chạy sam delete, đi qua checklist 7 điểm để tránh để lại orphan resource tiếp tục phát sinh chi phí:
+Trước khi chạy `sam delete`, hãy kiểm tra các mục sau để tránh còn sót tài nguyên (orphan resources) tiếp tục phát sinh chi phí:
 
-- [ ] **Snapshot dữ liệu production** (nếu có) bằng export DynamoDB tables sang S3 qua aws dynamodb export-table-to-point-in-time. Stack mặc định không có data production, nhưng verify trước khi xóa.
-- [ ] **Tắt EventBridge rule** nếu muốn dừng scan ngay mà chưa xóa stack: aws events disable-rule --name ai-advisor-schedule.
-- [ ] **Confirm không có API call đang chạy** bằng tail CloudWatch logs trong giờ qua. Một scan đang chạy có thể để partial data trong DynamoDB sau khi delete.
-- [ ] **Note danh sách Cognito users** - sẽ mất khi stack bị xóa. Backup qua aws cognito-idp list-users --user-pool-id <id> > users.json nếu cần khôi phục sau.
-- [ ] **Disable API Gateway usage plan** để dừng tracking throttling trên stage đã xóa.
-- [ ] **Xóa S3 deployment artifact** mà SAM đã tạo (sam deploy tạo bucket tên aws-sam-cli-managed-default-samclisourcebucket-...).
-- [ ] **Thu hồi customer IAM role** trong tài khoản đích (các tài khoản AWS riêng mà tác giả workshop không kiểm soát, nhưng document action cho khách hàng).
+* **Sao lưu dữ liệu production (nếu có):** Xuất các bảng DynamoDB sang Amazon S3 bằng lệnh `aws dynamodb export-table-to-point-in-time`. Mặc định workshop không sử dụng dữ liệu production, tuy nhiên vẫn nên xác minh trước khi xóa.
+* **Tắt EventBridge Rule (nếu chưa xóa stack ngay):** Nếu chỉ muốn dừng tiến trình quét định kỳ, sử dụng lệnh `aws events disable-rule --name ai-advisor-schedule`.
+* **Kiểm tra các API đang hoạt động:** Theo dõi CloudWatch Logs trong khoảng một giờ gần nhất để đảm bảo không còn tiến trình quét (scan) đang chạy, tránh phát sinh dữ liệu chưa hoàn chỉnh trong DynamoDB khi xóa stack.
+* **Sao lưu danh sách người dùng Cognito:** Toàn bộ người dùng trong User Pool sẽ bị xóa cùng stack. Nếu cần khôi phục sau này, hãy xuất danh sách bằng lệnh `aws cognito-idp list-users --user-pool-id <UserPoolId> > users.json`.
+* **Vô hiệu hóa API Gateway Usage Plan:** Thực hiện nếu muốn dừng việc theo dõi giới hạn truy cập (throttling) và thống kê sử dụng của API.
+* **Xóa S3 Deployment Artifacts:** Dọn dẹp bucket do AWS SAM tạo để lưu trữ deployment artifacts (ví dụ: `aws-sam-cli-managed-default-samclisourcebucket-...`).
+* **Thu hồi Customer IAM Role:** Nếu đã cấu hình IAM Role trên các tài khoản AWS của khách hàng để AI AWS Advisor thực hiện `AssumeRole`, hãy thu hồi hoặc xóa các role này khi không còn nhu cầu sử dụng.
 
-Sau khi hoàn thành checklist và xác nhận stack deletion output, toàn bộ deploy footprint đã được dọn sạch và AWS bill về baseline.
-
----
+Sau khi hoàn thành các bước trên và xác nhận `sam delete` đã thực thi thành công, toàn bộ tài nguyên được triển khai bởi AI AWS Advisor sẽ được dọn dẹp, đồng thời chi phí AWS sẽ trở về mức cơ bản (baseline).
 
 ## Tóm tắt Phần
 

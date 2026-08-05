@@ -1,6 +1,6 @@
 ﻿---
 title: "Chiến lược Triển khai"
-date: 2026-05-01
+date: 2026-07-07
 weight: 4
 chapter: false
 pre: " <b> 5.4. </b> "
@@ -24,7 +24,7 @@ sam build --use-container
 
 **Hình 1 - Kết quả SAM CLI `sam build --use-container` (Build Succeeded):**
 
-<img src="/images/5.4-Deployment-strategy/sam_build.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam build --use-container chạy thành công: Building codeuri backend, Running CustomMakeBuilder for Python function, Build Succeeded, Built Artifacts .aws-sam/build, Built Template .aws-sam/build/template.yaml" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![SAM Build](/images/5-Workshop/5.4-Deployment-strategy/sam_build.png)
 
 ### Bước 2: Triển khai CloudFormation Stack
 Thực hiện triển khai theo hướng dẫn để khởi tạo API Gateway, Lambda Functions, DynamoDB, EventBridge và SNS.
@@ -35,7 +35,7 @@ sam deploy --guided
 
 **Hình 2 - Kết quả SAM CLI `sam deploy --guided` (Successfully created/updated stack):**
 
-<img src="/images/5.4-Deployment-strategy/sam_deploy.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh sam deploy --guided chạy thành công: 9 AWS resources được liệt kê (IAM roles, Lambda functions, DynamoDB tables, SNS topic, API Gateway, EventBridge rule), CloudFormation changeset với các thao tác + Create, Successfully created/updated stack ai-aws-advisor-backend in us-east-1, Outputs có ApiEndpoint URL" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![SAM Deploy](/images/5-Workshop/5.4-Deployment-strategy/sam_deploy.png)
 
 Các tham số chính:
 - **Stack Name:** `ai-aws-advisor`
@@ -86,11 +86,11 @@ Các bước khách hàng thực hiện để kết nối tài khoản AWS cần
 
 **Hình 3 - Trang tóm tắt IAM Role phía khách hàng (đã che Account ID):**
 
-<img src="/images/5.4-Deployment-strategy/iam_audit_role_summary.png?v=2026-08-01-r1" alt="AWS IAM console hiển thị trang tóm tắt của AIAdvisorAuditRole trong tài khoản khách hàng - Role ARN arn:aws:iam::XXXXXXXXXXXX:role/AIAdvisorAuditRole, đã gắn managed policy ReadOnlyAccess và trusted entity là một AWS Account cụ thể" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![IAM Audit Role Summary](/images/5-Workshop/5.4-Deployment-strategy/iam_audit_role_summary.png)
 
 **Hình 4 - Tab Trust relationships — JSON Trust policy (đã che Account ID):**
 
-<img src="/images/5.4-Deployment-strategy/iam_audit_role_trust_policy.png?v=2026-08-01-r1" alt="Tab Trust relationships của AIAdvisorAuditRole hiển thị JSON trust policy với Action sts:AssumeRole và Principal AWS arn:aws:iam::XXXXXXXXXXXX:root - chính là mẫu cross-account delegation mà AI AWS Advisor sử dụng" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![IAM Trust Policy](/images/5-Workshop/5.4-Deployment-strategy/iam_audit_role_trust_policy.png)
 
 ---
 
@@ -171,10 +171,10 @@ EventBridge schedule theo giờ giữ data tươi ở background không cần op
 
 **Hình 6 - Dashboard sau scan đầu tiên thành công, hiển thị 4 KPI card và insight cho từng dự án được sinh bởi Bedrock Claude 3 Haiku:**
 
-<img src="/images/5.1-Workshop-overview/ui_dashboard_overview.png?v=2026-08-01-r4" alt="Trang Dashboard Overview của AI AWS Advisor sau lần customer scan đầu tiên thành công - hàng trên hiển thị 4 KPI card trực tiếp do Collector Lambda tính: System Health 78%, Resources 75, Critical Risks 4, Monthly Savings $2.5K. Tab switcher đang ở ProDev (active, tím), Beta Dev và Production. Mỗi tab load AI Analysis panel với severity counts (High: 4, Medium: 0, Low: 0) và ô AI Chat. Dữ liệu được Bedrock Claude 3 Haiku sinh từ raw resource lưu trong bảng DynamoDB ai-advisor-resources." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![Dashboard Overview](/images/5-Workshop/5.4-Deployment-strategy/dashboard_overview.png)
 
 ---
 
 ## Tóm tắt Phần
 
-Chiến lược triển khai này đi qua 4 track cụ thể: (1) deploy backend SAM kèm ghi nhận outputs, (2) phát triển frontend local, (3) onboarding IAM role phía khách hàng, và (4) hosting SPA production trên S3 + CloudFront. Mọi artifact đều tái lập được từ repo qua chuỗi `sam deploy --guided` + `npm run build` + `aws s3 sync` duy nhất.
+Chiến lược triển khai của AI AWS Advisor gồm bốn giai đoạn chính: **(1)** triển khai backend bằng AWS SAM và ghi nhận các CloudFormation Outputs, **(2)** phát triển và kiểm thử ứng dụng frontend trên môi trường cục bộ, **(3)** tích hợp tài khoản AWS của khách hàng thông qua cơ chế IAM Role (cross-account), và **(4)** triển khai ứng dụng React lên môi trường production bằng Amazon S3 kết hợp CloudFront. Toàn bộ quy trình có thể được tái lập từ mã nguồn trong repository thông qua chuỗi lệnh `sam deploy --guided`, `npm run build` và `aws s3 sync`, giúp việc triển khai trở nên nhất quán, dễ bảo trì và thuận tiện tích hợp vào các quy trình DevOps.

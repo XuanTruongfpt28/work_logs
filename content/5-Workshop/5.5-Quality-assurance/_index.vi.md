@@ -1,6 +1,6 @@
 ﻿---
 title: "Kiểm thử & Chất lượng"
-date: 2026-05-01
+date: 2026-07-07
 weight: 5
 chapter: false
 pre: " <b> 5.5. </b> "
@@ -25,10 +25,14 @@ Backend sử dụng `pytest` kết hợp với thư viện giả lập môi trư
 cd backend
 python -m pytest tests/ -v
 ```
+**Hình 1.** Kết quả kiểm thử **Backend** bằng lệnh `pytest tests/ -v`, trong đó toàn bộ **26 bài kiểm thử** thuộc **7 tệp kiểm thử** (API Handlers, AI Analyzer và Shared Database Layer) đều thực thi thành công. Quá trình kiểm thử hoàn tất trong **4,32 giây** và đạt **93% độ bao phủ mã nguồn (Code Coverage)**, cho thấy các thành phần cốt lõi của hệ thống đã được kiểm chứng và hoạt động ổn định.
 
-**Hình 1 - Bộ test Backend — `pytest tests/ -v` hiển thị 26 tests passed qua 7 file test (API handlers + AI analyzer + shared DB layer), thực thi trong 4.32s với 93% code coverage:**
 
-<img src="/images/5.5-Quality-assurance/pytest_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh pytest -v: 26 tests được thu thập và passed qua 7 file test (api/test_projects.py, api/test_resources.py, api/test_insights.py, api/test_alerts.py, api/test_chat.py, ai/test_analyzer.py, shared/test_db.py). Footer summary cho thấy 26 passed in 4.32s và bảng coverage với tổng 93%. Không có test fail, không có test skip." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+
+![Pytest_output](/images/5-Workshop/5.5-Quality-assurance/pytest_output.png)
+
+
+
 
 ---
 
@@ -46,9 +50,11 @@ cd frontend
 npm run test
 ```
 
-**Hình 2 - Bộ test Frontend — `npm run test` (vitest run) hiển thị 7 component/hook tests passed qua 5 file test (Dashboard ở 2 vị trí, Copilot, ProjectContext, api), thực thi dưới 3s với Vite watch mode:**
+**Hình 2.** Kết quả kiểm thử **Frontend** bằng lệnh `npm run test` (Vitest), trong đó toàn bộ **7 bài kiểm thử** thuộc **5 tệp kiểm thử** (Dashboard, Copilot, Project Context và API) đều thực thi thành công. Quá trình kiểm thử hoàn tất trong **dưới 3 giây**, đồng thời hỗ trợ **Vite Watch Mode** để tự động chạy lại các bài kiểm thử khi mã nguồn thay đổi, giúp rút ngắn thời gian phát triển và kiểm tra giao diện.
 
-<img src="/images/5.5-Quality-assurance/npm_test_output.png?v=2026-08-01-r1" alt="Terminal PowerShell 7 hiển thị lệnh npm run test (vitest run): 7 tests passed qua 5 file test (src/pages/__tests__/Dashboard.test.jsx với 3 tests, src/tests/pages/Dashboard.test.jsx với 1 test, src/tests/pages/Copilot.test.jsx với 1 test, src/tests/context/ProjectContext.test.jsx với 1 test, src/services/__tests__/api.test.js với 1 test). Footer summary cho thấy 5 Test Files passed (5), 7 Tests passed (7), Duration ~2.5s. Không có test fail." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![npm_test_output](/images/5-Workshop/5.5-Quality-assurance/npm_test_output.png)
+
+
 
 ---
 
@@ -113,7 +119,7 @@ Báo cáo HTML drill down file-by-file và line-by-line. Điểm 93% aggregate t
 
 ## 6. Sẵn sàng cho CI/CD Pipeline
 
-Cả hai test suite chạy độc lập dưới **8 giây** (4.32s pytest + ~2.5s vitest + ~1s setup) mà không cần internet hay cloud dependency. Chuỗi đầy đủ sẵn sàng thêm vào GitHub Actions workflow tại .github/workflows/test.yml:
+Cả hai test suite chạy độc lập dưới **8 giây** (4.32s pytest + ~2.5s vitest + ~1s setup) mà không cần internet hay cloud dependency. Chuỗi đầy đủ sẵn sàng thêm vào GitHub Actions workflow tại github/workflows/test.yml:
 
 ```yaml
 name: tests
@@ -142,4 +148,4 @@ Workflow này có thể mở rộng để deploy khi tag release (on: push: tags
 
 ## Tóm tắt Phần
 
-Chiến lược test 2 lớp (pytest + moto cho backend, Vitest + RTL cho frontend) cung cấp 33 test nhanh, deterministic với 93% coverage. Tất cả test chạy <8 giây không cần external dependency, dễ dàng plug vào bất kỳ CI provider nào.
+Chiến lược kiểm thử hai lớp, kết hợp **Pytest** và **Moto** cho backend với **Vitest** và **React Testing Library (RTL)** cho frontend, cung cấp tổng cộng **33 bài kiểm thử** có thời gian thực thi nhanh, kết quả ổn định (deterministic) và đạt **93% độ bao phủ mã nguồn (Code Coverage)**. Toàn bộ các bài kiểm thử hoàn thành trong **dưới 8 giây**, không phụ thuộc vào các dịch vụ bên ngoài (external dependencies), đồng thời có thể dễ dàng tích hợp vào hầu hết các nền tảng **Continuous Integration (CI)**.

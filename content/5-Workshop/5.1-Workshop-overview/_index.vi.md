@@ -1,9 +1,9 @@
 ---
-title: "Tổng quan Workshop"
-date: 2026-05-01
-weight: 1
-chapter: false
-pre: " <b> 5.1. </b> "
+title : "Giới thiệu"
+date : 2026-07-07
+weight : 1
+chapter : false
+pre : " <b> 5.1. </b> "
 ---
 
 # Phần 5.1 - Tổng quan Workshop
@@ -12,11 +12,18 @@ pre: " <b> 5.1. </b> "
 
 **AI AWS Advisor** được thiết kế như một hệ thống B2B SaaS toàn diện cấp doanh nghiệp, có khả năng quét hạ tầng đa tài khoản AWS của khách hàng một cách an toàn, thu thập cấu hình bằng cơ chế phân quyền tạm thời và phân tích bằng Trí tuệ nhân tạo (Generative AI).
 
-**Hình 1 - Sơ đồ Kiến trúc Tổng quan AI AWS Advisor (Web Dashboard → API Gateway → Lambda → DynamoDB ↔ Bedrock + STS AssumeRole):**
+**Hình 1 - Sơ đồ Kiến trúc Tổng quan AI AWS Advisor**
 
-<img src="/images/5.1-Workshop-overview/workshop_architecture.png?v=2026-08-01-r3" alt="Sơ đồ kiến trúc tổng quan AI AWS Advisor - Ba vùng độc lập: (1) Client Frontend với React 19 + Vite + Tailwind Dashboard (Recharts, TanStack Query) được phục vụ qua CloudFront+S3; (2) AI Advisor Backend gồm API Gateway (REST, 11 routes, Cognito JWT Authorizer) điều hướng tới SÁU Lambda functions — NĂM API Handler chuyên biệt (ai-advisor-projects-api: 5 routes list/create/get/delete/sync, ai-advisor-resources-api: 2 routes list/get, ai-advisor-insights-api: 2 routes list/generate + Bedrock + SNS, ai-advisor-chat-api: 1 route chat + Bedrock streaming, ai-advisor-alerts-api: 1 route list) và MỘT Collector Lambda (ai-advisor-collector trigger bởi EventBridge rate(1 hour), dùng sts:AssumeRole cross-account, thực hiện 23 AWS read-actions trên EC2/S3/IAM/Lambda/CloudWatch); Amazon Bedrock Claude 3 Haiku (anthropic.claude-3-haiku-20240307-v1:0); Amazon SNS Topic ai-advisor-alerts + email subscription cho critical-risk notifications; DynamoDB Multi-Table (4 bảng chuyên biệt: ai-advisor-projects PK=project_id+SK=sk, ai-advisor-resources PK=project_id+SK=resource_id + GSI resource_type-index, ai-advisor-insights PK=project_id+SK=insight_id, ai-advisor-alerts PK=project_id+SK=alert_id); (3) Customer Target AWS Accounts với STS AssumeRole truy cập EC2/S3/IAM/Lambda/CloudWatch resources qua audit IAM Role AIAdvisorAuditRole." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
-_Sơ đồ trên minh họa luồng dữ liệu tổng quan của nền tảng AI AWS Advisor: người dùng tương tác với **Enterprise Web Dashboard**, gọi **Amazon API Gateway** qua HTTPS/REST. API Gateway phân phối yêu cầu đến năm API Lambda handler chuyên biệt (Projects, Resources, Insights, Chat Copilot, Alerts) đọc/ghi **bốn bảng Amazon DynamoDB**. Song song, **Hourly Scanning Collector Lambda** gọi `sts:AssumeRole` để đọc an toàn tài khoản AWS khách hàng, sau đó gửi Prompt JSON Context đến **Amazon Bedrock** (Claude 3 Haiku) sinh các khuyến nghị tối ưu bằng AI. Tổng số Lambda trong backend serverless là **sáu** (5 API + 1 Collector)._
+![Architecture](/images/5-Workshop/5.1-Workshop-overview/architecture.png)
+
+
+Sơ đồ trên minh họa luồng dữ liệu tổng quan của nền tảng **AI AWS Advisor**. Người dùng truy cập **Enterprise Web Dashboard**, sau đó gửi các yêu cầu qua giao thức **HTTPS/REST** đến **Amazon API Gateway**. API Gateway tiếp nhận và phân phối yêu cầu đến năm **AWS Lambda API Handler** chuyên biệt (**Projects, Resources, Insights, Chat Copilot** và **Alerts**), các Lambda này thực hiện việc đọc và ghi dữ liệu trên **bốn bảng Amazon DynamoDB**.
+
+Song song với luồng xử lý yêu cầu từ người dùng, **Hourly Scanning Collector Lambda** định kỳ sử dụng quyền `sts:AssumeRole` để truy cập an toàn vào tài khoản AWS của khách hàng, thu thập thông tin tài nguyên và tạo **Prompt JSON Context**. Dữ liệu này được gửi đến **Amazon Bedrock** (Claude 3 Haiku) để phân tích và sinh các khuyến nghị tối ưu hóa bằng AI.
+
+Toàn bộ backend của hệ thống được triển khai theo kiến trúc serverless với **sáu hàm Lambda**, bao gồm **năm API Lambda Handler** và **một Collector Lambda**.
+
 
 ---
 
@@ -75,29 +82,46 @@ UI primitive dùng **shadcn/ui** (Radix-based), style bằng **Tailwind CSS**; b
 
 Dưới đây là giao diện thực tế của từng trang, chụp từ session workshop author với stack đã deploy tại `us-east-1`:
 
-**Hình 2 - Dashboard Overview (`/`) hiển thị 4 KPI card (System Health 78%, Resources 75, Critical Risks 4, Monthly Savings $2.5K), tab chuyển dự án (ProDev / Beta Dev / Production) và panel AI Analysis với đếm severity và ô input AI Chat:**
+**Hình 2.** Trang **Dashboard Overview** (`/`) hiển thị bốn thẻ KPI chính gồm **System Health (78%)**, **Resources (75)**, **Critical Risks (4)** và **Monthly Savings ($2.5K)**. Bên dưới là khu vực chuyển đổi giữa các dự án (**ProDev**, **Beta Dev** và **Production**). Ở phía phải là **AI Analysis Panel**, hiển thị số lượng cảnh báo theo từng mức độ nghiêm trọng (severity) và ô nhập **AI Chat** để người dùng đặt câu hỏi về hạ tầng AWS.
 
-<img src="/images/5.1-Workshop-overview/ui_dashboard_overview.png?v=2026-08-01-r4" alt="Trang Dashboard Overview của AI AWS Advisor render với backend đã deploy - hàng trên hiển thị 4 KPI card: System Health 78% (gradient tím), Resources 75 (gradient xanh dương), Critical Risks 4 (gradient cam), Monthly Savings $2.5K (gradient xanh lá). Bên dưới là tab switcher với ProDev (active, tím), Beta Dev, và Production. Mỗi tab load project summary với empty state và sidebar AI Analysis panel hiển thị severity counts (High: 4, Medium: 0, Low: 0) cùng ô input AI Chat placeholder 'Hỏi về hạ tầng của bạn...'" width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
-**Hình 3 - Trang Projects (`/projects`) liệt kê 3 môi trường AWS dưới dạng card gradient (ProDev dấu tick xanh status Active, Beta Dev amber pending status, Production đỏ warning 4 critical issues), mỗi card hiển thị Project ID, Role ARN, Last Scan timestamp và 3 action button:**
 
-<img src="/images/5.1-Workshop-overview/ui_projects_list.png?v=2026-08-01-r4" alt="Trang Projects của AI AWS Advisor liệt kê ba môi trường AWS của khách hàng dưới dạng card gradient trong grid responsive: ProDev (gradient xanh lá, status Active, Project ID PRJ-1301, Role ARN arn:aws:iam::050912644653:role/AIAdvisorAuditRole, Last Scan 1/30/2026 với nút Sync Now và Add Project); Beta Dev (gradient amber, status Pending); Production (gradient đỏ, status hiển thị 4 critical issues). Mỗi card có 3 nút Sync, View Details và Delete." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![dashboard](/images/5-Workshop/5.1-Workshop-overview/dashboard_overview.png)
 
-**Hình 4 - Trang Cost Optimization (`/cost`) hiển thị AI phát hiện idle EC2 instance tiết kiệm ($124.50/tháng), hero card 'Potential Monthly Savings', và 3 cost optimization insights xếp hạng theo severity (Idle EC2 detected, Rightsizing recommendation, Reserved Instance opportunity):**
 
-<img src="/images/5.1-Workshop-overview/ui_cost_optimization.png?v=2026-08-01-r4" alt="Trang Cost Optimization của AI AWS Advisor với hero card 'Potential Monthly Savings' hiển thị $124.50/tháng. Bên dưới là 3 cost insight do AI sinh xếp theo severity: (1) Idle EC2 Instance Detected với $85.50/tháng tiềm năng tiết kiệm và đề xuất 'Implement rightsizing or terminate'; (2) Over-provisioned RDS Instance với $24.00/tháng và đề xuất 'Downsize to db.t3.medium'; (3) Unused Elastic IP Address với $15.00/tháng và đề xuất 'Release the Elastic IP'. Mỗi insight card hiển thị Category, Estimated Monthly Savings và badge Severity màu." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
 
-**Hình 5 - Trang Performance Insights (`/performance`) hiển thị critical DB Node Overloaded ở 98.5% CPU, cùng 3 performance insight (CPU saturation, I/O bottleneck, Lambda cold start) với utilization bar và đề xuất AI:**
 
-<img src="/images/5.1-Workshop-overview/ui_performance_insights.png?v=2026-08-01-r4" alt="Trang Performance Insights của AI AWS Advisor hiển thị phát hiện nghiêm trọng nhất qua hero card: 'DB Node Overloaded' ở 98.5% CPU utilization với thanh utilization đỏ tại 98.5% và đề xuất AI 'Consider scaling vertically or enabling read replicas'. Bên dưới là 3 performance insight bổ sung: (1) Lambda Cold Start Latency với badge severity trung bình và thanh utilization 23%; (2) I/O Bottleneck on EBS Volume với badge severity thấp; (3) Memory Pressure on App Server với thanh utilization amber." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+**Hình 3.** Trang **Projects** (`/projects`) hiển thị ba môi trường AWS dưới dạng các thẻ (card) với màu sắc phân biệt theo trạng thái, gồm **ProDev** (Active – dấu tick xanh), **Beta Dev** (Pending – màu hổ phách) và **Production** (Warning – 4 Critical Issues, màu đỏ). Mỗi thẻ cung cấp các thông tin chính như **Project ID**, **IAM Role ARN**, **thời điểm quét gần nhất (Last Scan)** và ba nút thao tác để quản lý dự án.
 
-**Hình 6 - Trang Security Risks (`/security`) với 2 critical S3 bucket exposure (Public Access, Missing Encryption) và 1 medium IAM risk (Over-privileged Role), mỗi risk card hiển thị Severity badge, Resource ARN, Detection method và AI remediation steps:**
 
-<img src="/images/5.1-Workshop-overview/ui_security_risks.png?v=2026-08-01-r4" alt="Trang Security Risks của AI AWS Advisor liệt kê 3 lỗ hổng đang hoạt động với severity badge: (1) CRITICAL - S3 Bucket Public Access trên aws-glue-assets-prod, phát hiện qua GetBucketPublicAccessBlock, đề xuất 'Enable Block Public Access and audit bucket ACL'; (2) CRITICAL - S3 Bucket Missing Encryption trên deploy-bucket-artifacts, đề xuất 'Enable default encryption with KMS key'; (3) MEDIUM - IAM Role Over-privileged trên LambdaExecutionRole, đề xuất 'Apply least-privilege policy and remove AdministratorAccess'. Mỗi card hiển thị Severity badge, Resource identifier, Detection method và AI-generated remediation steps." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+![projects_list](/images/5-Workshop/5.1-Workshop-overview/projects_list.png)
 
-**Hình 7 - AI Copilot chat (`/copilot`) với cuộc hội thoại 3 lượt giữa operator và Claude 3 Haiku — câu hỏi về resource đang tốn kém nhất, AI xếp hạng trỏ vào Production EC2 fleet, và follow-up hỏi về quyền tối ưu AI trả về dưới dạng action plan đánh số:**
+**Hình 4.** Trang **Cost Optimization** (`/cost`) hiển thị kết quả phân tích chi phí do AI tạo ra, bao gồm **Hero Card – Potential Monthly Savings** với mức tiết kiệm ước tính **124,50 USD/tháng** nhờ phát hiện **EC2 instance** không hoạt động (idle). Bên dưới là ba **Cost Optimization Insights** được sắp xếp theo mức độ ưu tiên (severity), gồm **Idle EC2 Detected**, **Rightsizing Recommendation** và **Reserved Instance Opportunity**, giúp người dùng nhanh chóng xác định các cơ hội tối ưu chi phí trên hạ tầng AWS.
 
-<img src="/images/5.1-Workshop-overview/ui_ai_copilot.png?v=2026-08-01-r4" alt="Giao diện chat AI Copilot của AI AWS Advisor hiển thị cuộc hội thoại 3 lượt tiếng Việt giữa operator và Claude 3 Haiku: (1) 'tài nguyên nào đang tốn kém nhất'; (2) AI phản hồi phân tích rằng 4 EC2 Production chiếm cost lớn nhất ~$720/tháng và đề xuất terminate 2 instance idle; (3) follow-up 'có thể tối ưu không?'; (4) AI trả về action plan 4 bước đánh số: rightsize Production instance, chuyển sang Compute Savings Plans, xóa 4 stopped instance, bật S3 Intelligent-Tiering. Chat header hiển thị 'AI Advisor Assistant' với badge Powered by Claude 3 Haiku." width="700" style="max-width:700px;width:100%;height:auto;display:block;margin:0 auto;">
+
+![cost_optimization](/images/5-Workshop/5.1-Workshop-overview/cost_optimization.png)
+
+
+**Hình 5.** Trang **Performance Insights** (`/performance`) hiển thị kết quả phân tích hiệu năng hệ thống, trong đó nổi bật là cảnh báo **DB Node Overloaded** với mức sử dụng **CPU đạt 98,5%**. Bên dưới là ba **Performance Insights** được AI phân tích, gồm **CPU Saturation**, **I/O Bottleneck** và **Lambda Cold Start**. Mỗi mục hiển thị thanh **Utilization** cùng các khuyến nghị do AI đề xuất, giúp người dùng nhanh chóng xác định nguyên nhân gây suy giảm hiệu năng và lựa chọn giải pháp tối ưu phù hợp.
+
+
+![cost_optimization](/images/5-Workshop/5.1-Workshop-overview/cost_optimization.png)
+
+
+
+**Hình 6.** Trang **Security Risks** (`/security`) hiển thị các rủi ro bảo mật được AI phát hiện trên hạ tầng AWS, bao gồm hai cảnh báo mức **Critical** liên quan đến **S3 Bucket Exposure** (*Public Access* và *Missing Encryption*) cùng một rủi ro mức **Medium** đối với **IAM Over-privileged Role**. Mỗi **Risk Card** cung cấp các thông tin quan trọng như **Severity Badge**, **Resource ARN**, **Detection Method** và các **AI Remediation Steps**, giúp người dùng nhanh chóng đánh giá mức độ ảnh hưởng và thực hiện các biện pháp khắc phục được đề xuất.
+
+
+![security_risks](/images/5-Workshop/5.1-Workshop-overview/security_risks.png)
+
+
+
+**Hình 7.** Trang **AI Copilot** (`/copilot`) minh họa cuộc hội thoại gồm ba lượt trao đổi giữa người vận hành (operator) và **Claude 3 Haiku**. Người dùng đặt câu hỏi về tài nguyên đang phát sinh chi phí cao nhất, AI phân tích và xác định **Production EC2 Fleet** là đối tượng cần ưu tiên tối ưu. Trong lượt trao đổi tiếp theo, AI tiếp tục trả lời câu hỏi về các quyền và phương án tối ưu dưới dạng **Action Plan** được trình bày theo từng bước đánh số, giúp người dùng dễ dàng thực hiện các khuyến nghị.
+
+
+
+![ai_copilot](/images/5-Workshop/5.1-Workshop-overview/ai_copilot.png)
+
 
 ---
 
@@ -146,4 +170,4 @@ aws-advisor/
 
 ## Tóm tắt Phần
 
-Phần tổng quan này đặt nền tảng cho toàn bộ workshop. Các phần sau đi sâu vào yêu cầu hệ thống (§5.2), kiến trúc end-to-end (§5.3), chiến lược triển khai (§5.4), đảm bảo chất lượng (§5.5) và vận hành & dọn dẹp (§5.6).
+Phần tổng quan này đặt nền tảng cho toàn bộ workshop. Các phần sau đi sâu vào yêu cầu hệ thống (5.2), kiến trúc end-to-end (5.3), chiến lược triển khai (5.4), đảm bảo chất lượng (5.5) và vận hành & dọn dẹp (5.6).
